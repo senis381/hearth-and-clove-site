@@ -493,9 +493,22 @@
     sync();
   }
 
+  /* ---------------- Inert demo links ----------------
+     The social accounts and the Instagram handle belong to a fictional bakery, so
+     they stay href="#". Left alone that yanks the page to the top; say so instead. */
+  function initDemoLinks(toast) {
+    $$('a[href="#"]').forEach((a) =>
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        toast("Hearth & Clove is a fictional brand — this link goes nowhere.");
+      })
+    );
+  }
+
   /* ---------------- Init ---------------- */
   document.addEventListener("DOMContentLoaded", () => {
     const toast = initToasts();
+    initDemoLinks(toast);
     initReveal();
     initScrollChrome();
     initMenuTabs();
