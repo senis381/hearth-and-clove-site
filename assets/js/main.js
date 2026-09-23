@@ -2,7 +2,7 @@
    Hearth & Clove — main.js
    Plain vanilla JS. No dependencies, no build step.
    Sections: helpers, toasts, scroll reveal, nav drawer, lightbox, cart,
-   forms (contact + reservation), self-test.
+   forms (contact + reservation), scroll chrome, menu tabs, self-test.
    ========================================================================== */
 
 (function () {
@@ -55,7 +55,7 @@
   /* ---------------- Scroll reveal ----------------
      IntersectionObserver, fires once, then unobserves. */
   function initReveal() {
-    const els = $$(".reveal, .reveal-rise");
+    const els = $$(".reveal, .reveal-rise, .reveal-clip");
     if (!els.length) return;
     if (!("IntersectionObserver" in window)) {
       els.forEach((el) => el.classList.add("is-visible"));
@@ -221,8 +221,14 @@
 
     function render() {
       const ls = lines();
+      const prev = Number(badge.textContent) || 0;
       badge.textContent = String(count());
       badge.hidden = count() === 0;
+      if (count() > prev) {
+        // pop the badge via a class toggle, so the transition curve in CSS does the work
+        badge.classList.add("is-pop");
+        setTimeout(() => badge.classList.remove("is-pop"), 160);
+      }
 
       if (!ls.length) {
         body.innerHTML = '<p class="cart-drawer__empty">Your order is empty. Add something warm from the menu.</p>';
@@ -292,14 +298,15 @@
       btn.addEventListener("click", () => {
         cart.add(btn.dataset.id, 1);
         btn.classList.add("is-added");
-        const original = btn.dataset.label || btn.textContent.trim();
-        btn.dataset.label = original;
-        btn.textContent = "Added";
+        // keep the original markup (icon + label) so the check-icon state can be reverted verbatim
+        if (!btn.dataset.label) btn.dataset.label = btn.innerHTML;
+        const original = btn.dataset.label;
+        btn.innerHTML = '<svg class="icon" viewBox="0 0 24 24"><use href="#icon-check"/></svg> Added';
         toast(`${btn.dataset.name} added to your order.`);
         setTimeout(() => {
           btn.classList.remove("is-added");
-          btn.textContent = original;
-        }, 1100);
+          btn.innerHTML = original;
+        }, 1200);
       });
     });
 
@@ -408,10 +415,90 @@
     console.log("[selftest] done — check above for any failed assertions");
   }
 
+  /* ---------------- Scroll chrome ----------------
+     Nav background, scroll-progress bar and deckle parallax all read scroll position,
+     so they share ONE rAF-throttled listener. Transforms only — nothing here reflows. */
+  function initScrollChrome() {
+    const nav = $(".nav");
+    const bar = $("#scroll-progress");
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const deckles = reduced ? [] : $$(".deckle");
+    let queued = false;
+
+    function update() {
+      queued = false;
+      const y = window.scrollY;
+      if (nav) nav.classList.toggle("is-scrolled", y > 40);
+      if (bar) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
+      }
+      deckles.forEach((d) => {
+        const inner = d.firstElementChild;
+        if (!inner) return;
+        // ±12px drift, keyed to how far the divider sits from the middle of the viewport
+        const mid = d.getBoundingClientRect().top + d.offsetHeight / 2;
+        const off = (mid / window.innerHeight - 0.5) * -24;
+        inner.style.transform = `translateY(${Math.max(-12, Math.min(12, off)).toFixed(2)}px)`;
+      });
+    }
+
+    function onScroll() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(update);
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    update();
+  }
+
+  /* ---------------- Menu tabs ----------------
+     Tab switching itself is CSS (:checked ~ .menu-panels). JS only slides the single
+     caramel indicator and numbers the rows so they can stagger in. */
+  function initMenuTabs() {
+    const tabs = $(".menu-tabs");
+    if (!tabs) return;
+    const indicator = $(".menu-tabs__indicator", tabs);
+    const labels = $$(".tab-label", tabs);
+    if (!indicator || !labels.length) return;
+
+    function moveTo(label) {
+      const vertical = getComputedStyle(tabs).flexDirection === "column";
+      if (vertical) {
+        indicator.style.setProperty("--tab-y", `${label.offsetTop}px`);
+        indicator.style.setProperty("--tab-h", label.offsetHeight);
+      } else {
+        indicator.style.setProperty("--tab-x", `${label.offsetLeft - tabs.scrollLeft}px`);
+        indicator.style.setProperty("--tab-w", label.offsetWidth);
+      }
+    }
+
+    function sync() {
+      const checked = labels.find((l) => {
+        const radio = document.getElementById(l.getAttribute("for"));
+        return radio && radio.checked;
+      });
+      if (checked) moveTo(checked);
+    }
+
+    labels.forEach((l) => l.addEventListener("click", () => requestAnimationFrame(sync)));
+    tabs.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    if (document.fonts) document.fonts.ready.then(sync); // label widths shift once Fraunces/Epilogue land
+    $$(".menu-panel").forEach((panel) => {
+      $$(".menu-item", panel).forEach((item, i) => item.style.setProperty("--i", Math.min(i, 12)));
+    });
+    sync();
+  }
+
   /* ---------------- Init ---------------- */
   document.addEventListener("DOMContentLoaded", () => {
     const toast = initToasts();
     initReveal();
+    initScrollChrome();
+    initMenuTabs();
     initNavDrawer();
     initLightbox();
     const cart = createCart(toast);

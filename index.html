@@ -5,15 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>Hearth & Clove — Bakery &amp; Coffee House in Copenhagen</title>
 <meta name="description" content="Hearth & Clove is a bakery and coffee house on Blomstergade in Copenhagen, baking bread and pastry daily and pulling espresso from open to close.">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#EFE4CB">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#EFE4CB">
-<meta name="color-scheme" content="light">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F3EBDD">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#16110E">
+<meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Epilogue:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
 <!-- ============ Icon sprite (inline, single-weight line icons — no unicode glyphs) ============ -->
 <svg style="display:none" aria-hidden="true">
@@ -42,6 +44,9 @@
   </symbol>
   <symbol id="icon-menu" viewBox="0 0 24 24">
     <path d="M4 7h16M4 12h16M4 17h16"/>
+  </symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <path d="M4 12.6 9.4 18 20 6.6"/>
   </symbol>
   <symbol id="icon-bag" viewBox="0 0 24 24">
     <path d="M6 8h12l1 12.5a1 1 0 0 1-1 1.5H6a1 1 0 0 1-1-1.5L6 8Z"/>
@@ -132,27 +137,35 @@
   </div>
   <div class="hero__scrim"></div>
   <div class="hero__content container">
-    <h1 class="reveal is-visible">Freshly baked.<br>Slowly enjoyed.</h1>
-    <p class="hero__sub reveal is-visible" style="transition-delay:80ms">A neighborhood bakery and coffee house on Blomstergade, baking bread and pastry every morning and pulling espresso until close.</p>
-    <div class="hero__actions reveal is-visible" style="transition-delay:140ms">
+    <h1><span class="hero__word" style="--d:0">Freshly</span> <span class="hero__word" style="--d:50">baked.</span><br><span class="hero__word" style="--d:110">Slowly</span> <span class="hero__word" style="--d:160">enjoyed.</span></h1>
+    <p class="hero__sub hero-in" style="--d:280">A neighborhood bakery and coffee house on Blomstergade, baking bread and pastry every morning and pulling espresso until close.</p>
+    <div class="hero__actions hero-in" style="--d:360">
       <a href="#menu" class="btn btn-primary">See the menu</a>
       <a href="#visit" class="btn btn-secondary">Visit us</a>
     </div>
-    <div class="hero__info reveal is-visible" style="transition-delay:180ms">
+    <div class="hero__info hero-in" style="--d:440">
       <svg class="icon" viewBox="0 0 24 24"><use href="#icon-clock"/></svg>
       Open Mon–Fri 7:30–18:00, Sat–Sun 8:00–17:00
     </div>
   </div>
 </section>
 
-<div class="deckle"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Butter croissants &middot; Cardamom buns &middot; Flat whites &middot; Basque cheesecake &middot; Cinnamon rolls &middot; Cold brew &middot; Butter croissants &middot; Cardamom buns &middot; Flat whites &middot; Basque cheesecake &middot; Cinnamon rolls &middot; Cold brew &middot; </span>
+    <span>Butter croissants &middot; Cardamom buns &middot; Flat whites &middot; Basque cheesecake &middot; Cinnamon rolls &middot; Cold brew &middot; Butter croissants &middot; Cardamom buns &middot; Flat whites &middot; Basque cheesecake &middot; Cinnamon rolls &middot; Cold brew &middot; </span>
+  </div>
+</div>
+
+<div class="deckle deckle--dark-to-light"><div class="deckle__inner"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div></div>
 
 <!-- ============ Favorites ============ -->
 <section id="favorites">
   <div class="container">
     <div class="section-head reveal">
+      <span class="ordinal">01</span>
       <span class="eyebrow">On the counter</span>
-      <h2>A few of our favorites</h2>
+      <h2 class="reveal-clip">A few of our favorites</h2>
       <p>The things people come back for — pulled from the daily case and the espresso bar.</p>
     </div>
     <div class="product-grid">
@@ -160,6 +173,9 @@
       <article class="product-card reveal-rise">
         <div class="product-card__media">
           <img src="assets/img/products/butter-croissant.jpg" alt="A whole, flaky butter croissant." width="1000" height="750" loading="lazy">
+          <button type="button" class="product-card__add" data-id="butter-croissant" data-name="Butter Croissant" data-price="32" data-img="assets/img/products/butter-croissant.jpg">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
+          </button>
         </div>
         <div class="product-card__body">
           <div class="product-card__row">
@@ -167,15 +183,15 @@
             <span class="product-card__price">32 kr.</span>
           </div>
           <p class="product-card__desc">Laminated over three days, baked to order each morning.</p>
-          <button type="button" class="product-card__add" data-id="butter-croissant" data-name="Butter Croissant" data-price="32" data-img="assets/img/products/butter-croissant.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
         </div>
       </article>
 
       <article class="product-card reveal-rise" style="transition-delay:60ms">
         <div class="product-card__media">
           <img src="assets/img/products/cinnamon-roll.jpg" alt="A cinnamon bun fresh from its second rise, generously spiraled." width="1000" height="750" loading="lazy">
+          <button type="button" class="product-card__add" data-id="cinnamon-roll" data-name="Cinnamon Roll" data-price="38" data-img="assets/img/products/cinnamon-roll.jpg">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
+          </button>
         </div>
         <div class="product-card__body">
           <div class="product-card__row">
@@ -183,15 +199,15 @@
             <span class="product-card__price">38 kr.</span>
           </div>
           <p class="product-card__desc">Cardamom-laced dough, brown butter filling, glazed while warm.</p>
-          <button type="button" class="product-card__add" data-id="cinnamon-roll" data-name="Cinnamon Roll" data-price="38" data-img="assets/img/products/cinnamon-roll.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
         </div>
       </article>
 
       <article class="product-card reveal-rise" style="transition-delay:120ms">
         <div class="product-card__media">
           <img src="assets/img/products/cappuccino.jpg" alt="A cappuccino in a white cup with a dusting of cocoa." width="1000" height="666" loading="lazy">
+          <button type="button" class="product-card__add" data-id="cappuccino" data-name="Cappuccino" data-price="42" data-img="assets/img/products/cappuccino.jpg">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
+          </button>
         </div>
         <div class="product-card__body">
           <div class="product-card__row">
@@ -199,15 +215,15 @@
             <span class="product-card__price">42 kr.</span>
           </div>
           <p class="product-card__desc">Double espresso, steamed milk, poured thick.</p>
-          <button type="button" class="product-card__add" data-id="cappuccino" data-name="Cappuccino" data-price="42" data-img="assets/img/products/cappuccino.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
         </div>
       </article>
 
       <article class="product-card reveal-rise" style="transition-delay:180ms">
         <div class="product-card__media">
           <img src="assets/img/products/flat-white.jpg" alt="A flat white coffee with tight, velvety latte art." width="1000" height="800" loading="lazy">
+          <button type="button" class="product-card__add" data-id="flat-white" data-name="Flat White" data-price="44" data-img="assets/img/products/flat-white.jpg">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
+          </button>
         </div>
         <div class="product-card__body">
           <div class="product-card__row">
@@ -215,15 +231,15 @@
             <span class="product-card__price">44 kr.</span>
           </div>
           <p class="product-card__desc">A smaller, stronger pour for people who want to taste the coffee.</p>
-          <button type="button" class="product-card__add" data-id="flat-white" data-name="Flat White" data-price="44" data-img="assets/img/products/flat-white.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
         </div>
       </article>
 
       <article class="product-card reveal-rise" style="transition-delay:0ms">
         <div class="product-card__media">
           <img src="assets/img/products/iced-latte.jpg" alt="A macro view of an iced latte in a glass, layered with milk and espresso." width="1024" height="684" loading="lazy">
+          <button type="button" class="product-card__add" data-id="iced-latte" data-name="Iced Latte" data-price="46" data-img="assets/img/products/iced-latte.jpg">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
+          </button>
         </div>
         <div class="product-card__body">
           <div class="product-card__row">
@@ -231,15 +247,15 @@
             <span class="product-card__price">46 kr.</span>
           </div>
           <p class="product-card__desc">Cold milk over a double shot, no melted-ice compromise.</p>
-          <button type="button" class="product-card__add" data-id="iced-latte" data-name="Iced Latte" data-price="46" data-img="assets/img/products/iced-latte.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
         </div>
       </article>
 
       <article class="product-card reveal-rise" style="transition-delay:60ms">
         <div class="product-card__media">
           <img src="assets/img/products/matcha-latte.jpg" alt="A matcha latte with a vivid green swirl in a glass cup." width="874" height="1000" loading="lazy">
+          <button type="button" class="product-card__add" data-id="matcha-latte" data-name="Matcha Latte" data-price="44" data-img="assets/img/products/matcha-latte.jpg">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
+          </button>
         </div>
         <div class="product-card__body">
           <div class="product-card__row">
@@ -247,15 +263,15 @@
             <span class="product-card__price">44 kr.</span>
           </div>
           <p class="product-card__desc">Ceremonial-grade matcha, whisked, not just stirred.</p>
-          <button type="button" class="product-card__add" data-id="matcha-latte" data-name="Matcha Latte" data-price="44" data-img="assets/img/products/matcha-latte.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
         </div>
       </article>
 
       <article class="product-card reveal-rise" style="transition-delay:120ms">
         <div class="product-card__media">
           <img src="assets/img/products/basque-cheesecake.jpg" alt="A slice of Basque-style cheesecake with a deeply caramelized top." width="1024" height="683" loading="lazy">
+          <button type="button" class="product-card__add" data-id="basque-cheesecake" data-name="Basque Cheesecake" data-price="52" data-img="assets/img/products/basque-cheesecake.jpg">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
+          </button>
         </div>
         <div class="product-card__body">
           <div class="product-card__row">
@@ -263,15 +279,15 @@
             <span class="product-card__price">52 kr.</span>
           </div>
           <p class="product-card__desc">Burnt on purpose, no crust, barely set in the middle.</p>
-          <button type="button" class="product-card__add" data-id="basque-cheesecake" data-name="Basque Cheesecake" data-price="52" data-img="assets/img/products/basque-cheesecake.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
         </div>
       </article>
 
       <article class="product-card reveal-rise" style="transition-delay:180ms">
         <div class="product-card__media">
           <img src="assets/img/products/tiramisu.jpg" alt="A slice of tiramisu dusted with cocoa on a beige plate." width="939" height="1000" loading="lazy">
+          <button type="button" class="product-card__add" data-id="tiramisu" data-name="Tiramisu" data-price="56" data-img="assets/img/products/tiramisu.jpg">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
+          </button>
         </div>
         <div class="product-card__body">
           <div class="product-card__row">
@@ -279,9 +295,6 @@
             <span class="product-card__price">56 kr.</span>
           </div>
           <p class="product-card__desc">Espresso-soaked, mascarpone-heavy, made a day ahead.</p>
-          <button type="button" class="product-card__add" data-id="tiramisu" data-name="Tiramisu" data-price="56" data-img="assets/img/products/tiramisu.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
         </div>
       </article>
 
@@ -290,11 +303,12 @@
 </section>
 
 <!-- ============ Baked today ============ -->
-<section class="section-alt">
-  <div class="container">
+<section class="section-dark">
+  <div class="bleed">
     <div class="section-head reveal">
+      <span class="ordinal">02</span>
       <span class="eyebrow">Today's board</span>
-      <h2>Baked today</h2>
+      <h2 class="reveal-clip">Baked today</h2>
       <p>A short, changing list — what came out of the oven this morning.</p>
     </div>
     <div class="specials-strip">
@@ -339,17 +353,19 @@
   </div>
 </section>
 
-<div class="deckle"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div>
+<div class="deckle" style="--deckle-bg:var(--color-espresso);--deckle-fill:var(--color-parchment)"><div class="deckle__inner"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div></div>
 
 <!-- ============ Full menu ============ -->
-<section id="menu">
+<section id="menu" class="section-parchment">
   <div class="container">
     <div class="section-head reveal">
+      <span class="ordinal">03</span>
       <span class="eyebrow">Everything we make</span>
-      <h2>Full Menu</h2>
+      <h2 class="reveal-clip">Full Menu</h2>
       <p>Prices in Danish kroner. Ask at the counter about oat and soy milk — no charge either way.</p>
     </div>
 
+    <div class="menu-layout">
     <input type="radio" name="menu-tab" id="tab-coffee" class="menu-radio" checked>
     <input type="radio" name="menu-tab" id="tab-iced" class="menu-radio">
     <input type="radio" name="menu-tab" id="tab-matcha" class="menu-radio">
@@ -359,6 +375,7 @@
     <input type="radio" name="menu-tab" id="tab-breakfast" class="menu-radio">
 
     <div class="menu-tabs">
+      <span class="menu-tabs__indicator" aria-hidden="true"></span>
       <label for="tab-coffee" class="tab-label">Coffee</label>
       <label for="tab-iced" class="tab-label">Iced &amp; Cold</label>
       <label for="tab-matcha" class="tab-label">Matcha</label>
@@ -445,24 +462,31 @@
         </ul>
       </div>
     </div>
+    </div>
   </div>
 </section>
 
-<div class="deckle"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div>
+<div class="deckle" style="--deckle-bg:var(--color-parchment);--deckle-fill:var(--color-espresso)"><div class="deckle__inner"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div></div>
 
 <!-- ============ Our Story ============ -->
-<section id="story" class="section-alt">
+<section id="story" class="section-dark">
   <div class="container story">
     <div class="story__media story__media--hands reveal-rise">
       <img src="assets/img/story/founder-hands.jpg" alt="Hands tending spiral pastry dough as it turns and bakes over hot coals." width="1600" height="1200" loading="lazy">
     </div>
     <div class="story__text reveal">
+      <div class="story__lede">
+      <span class="ordinal">04</span>
       <span class="eyebrow">Our Story</span>
-      <h2>Maren Voss opened the doors in 2019</h2>
+      <h2 class="reveal-clip">Maren Voss opened the doors in 2019</h2>
+      <blockquote class="pull-quote">Nothing about the place is trying to be more than what it is.</blockquote>
+      </div>
+      <div class="story__body">
       <p>Maren trained in Lyon for three years before she came home to Copenhagen — long shifts at a small boulangerie where the baker refused to explain anything twice and the bread was better for it. She left knowing how to laminate dough at 4am with her eyes half closed, and how little that actually has to do with running a bakery.</p>
       <p>Hearth &amp; Clove started as one oven, one espresso machine, and eleven tables in a space that used to be a bicycle repair shop on Blomstergade. The first winter, Maren baked alone before sunrise and served the counter herself until the regulars started showing up early enough to help carry trays. Some of them still do.</p>
       <p>The name is plain on purpose — a hearth for the ovens, clove for the spice drawer she never stops reaching for. Nothing about the place is trying to be more than what it is: bread that takes the time it takes, coffee pulled by someone paying attention, and enough chairs that nobody has to rush their cup.</p>
       <p class="story__signoff">— Maren</p>
+      </div>
     </div>
   </div>
 </section>
@@ -471,8 +495,9 @@
 <section>
   <div class="container">
     <div class="section-head reveal">
+      <span class="ordinal">05</span>
       <span class="eyebrow">What we believe</span>
-      <h2>Our Philosophy</h2>
+      <h2 class="reveal-clip">Our Philosophy</h2>
     </div>
     <div class="philosophy-grid">
       <div class="philosophy-card reveal">
@@ -499,14 +524,15 @@
   </div>
 </section>
 
-<div class="deckle"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div>
+<div class="deckle deckle--light-to-dark"><div class="deckle__inner"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div></div>
 
 <!-- ============ Gallery ============ -->
-<section id="gallery" class="section-alt">
-  <div class="container">
+<section id="gallery" class="section-dark">
+  <div class="bleed">
     <div class="section-head reveal">
+      <span class="ordinal">06</span>
       <span class="eyebrow">A look inside</span>
-      <h2>Gallery</h2>
+      <h2 class="reveal-clip">Gallery</h2>
       <p>The counter, the ovens, the cups — a few frames from an ordinary morning.</p>
     </div>
     <div class="gallery-grid">
@@ -578,28 +604,30 @@
 </div>
 
 <!-- ============ A place to slow down ============ -->
-<section class="section-coffee">
-  <div class="container slowdown">
-    <div class="slowdown__media reveal-rise">
-      <img src="assets/img/story/interior-wide.jpg" alt="Café interior with wood-backed chairs at round tables, a pendant light, and rolling pins and ceramic plates mounted on the wall as décor." width="1200" height="1600" loading="lazy">
-    </div>
+<section class="section-dark slowdown">
+  <div class="slowdown__media">
+    <img src="assets/img/story/interior-wide.jpg" alt="Café interior with wood-backed chairs at round tables, a pendant light, and rolling pins and ceramic plates mounted on the wall as décor." width="1200" height="1600" loading="lazy">
+  </div>
+  <div class="container">
     <div class="slowdown__text reveal">
+      <span class="ordinal">07</span>
       <span class="eyebrow">Take your time</span>
-      <h2>A place to slow down</h2>
+      <h2 class="reveal-clip">A place to slow down</h2>
       <p>There's no rush here, and no Wi-Fi password taped to the espresso machine to hint otherwise. The window seats fill first, but the back tables are quieter, and the light in the afternoon comes in low and warm through the east-facing glass.</p>
       <p>Bring a book, bring a friend, bring nothing at all. The chairs don't have a time limit on them.</p>
     </div>
   </div>
 </section>
 
-<div class="deckle" style="--deckle-fill: var(--color-coffee)"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div>
+<div class="deckle deckle--dark-to-light"><div class="deckle__inner"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div></div>
 
 <!-- ============ Visit Us ============ -->
 <section id="visit">
   <div class="container">
     <div class="section-head reveal">
+      <span class="ordinal">08</span>
       <span class="eyebrow">Find us</span>
-      <h2>Visit Us</h2>
+      <h2 class="reveal-clip">Visit Us</h2>
     </div>
     <div class="visit-grid">
       <div class="visit-card reveal">
@@ -630,14 +658,14 @@
       </div>
       <div class="map-card reveal" style="transition-delay:80ms">
         <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <rect width="400" height="320" fill="#7C8A63"/>
-          <g stroke="#EFE4CB" stroke-width="3" opacity="0.5">
+          <rect width="400" height="320" fill="#56633F"/>
+          <g stroke="#F3EBDD" stroke-width="3" opacity="0.5">
             <line x1="0" y1="70" x2="400" y2="55"/>
             <line x1="0" y1="185" x2="400" y2="205"/>
             <line x1="55" y1="0" x2="85" y2="320"/>
             <line x1="255" y1="0" x2="225" y2="320"/>
           </g>
-          <g fill="#EFE4CB" opacity="0.3">
+          <g fill="#F3EBDD" opacity="0.3">
             <rect x="95" y="90" width="55" height="48" rx="4"/>
             <rect x="185" y="35" width="50" height="55" rx="4"/>
             <rect x="280" y="120" width="65" height="50" rx="4"/>
@@ -645,7 +673,7 @@
           </g>
         </svg>
         <div class="map-pin">
-          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="currentColor" stroke="var(--color-surface)"><use href="#icon-pin"/></svg>
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="currentColor" stroke="var(--color-espresso)"><use href="#icon-pin"/></svg>
         </div>
       </div>
     </div>
@@ -653,11 +681,12 @@
 </section>
 
 <!-- ============ Contact ============ -->
-<section class="section-alt">
+<section class="section-parchment">
   <div class="container two-col">
     <div class="section-head reveal" style="margin-bottom:0">
+      <span class="ordinal">09</span>
       <span class="eyebrow">Get in touch</span>
-      <h2>Contact</h2>
+      <h2 class="reveal-clip">Contact</h2>
       <p>Questions, catering, or just want to say hello — send a note and we'll get back to you.</p>
     </div>
     <form id="contact-form" class="form-card reveal" novalidate>
@@ -688,14 +717,18 @@
 <section id="order">
   <div class="container">
     <div class="section-head reveal">
+      <span class="ordinal">10</span>
       <span class="eyebrow">Order ahead</span>
-      <h2>Order for pickup</h2>
+      <h2 class="reveal-clip">Order for pickup</h2>
       <p>Add anything from the menu above with "Add to order," then open the cart in the top corner to review, choose a pickup time, and place a demo order — no payment required.</p>
     </div>
-    <div class="product-grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="product-grid product-grid--two">
       <article class="product-card reveal-rise">
         <div class="product-card__media">
           <img src="assets/img/gallery/coffee-beans.jpg" alt="A close-up texture of freshly roasted coffee beans." width="1600" height="1066" loading="lazy">
+          <button type="button" class="product-card__add" data-id="beans-bag" data-name="Coffee Beans, 500g Bag" data-price="145" data-img="assets/img/gallery/coffee-beans.jpg">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
+          </button>
         </div>
         <div class="product-card__body">
           <div class="product-card__row">
@@ -703,14 +736,14 @@
             <span class="product-card__price">145 kr.</span>
           </div>
           <p class="product-card__desc">Our house roast, whole bean or ground to order.</p>
-          <button type="button" class="product-card__add" data-id="beans-bag" data-name="Coffee Beans, 500g Bag" data-price="145" data-img="assets/img/gallery/coffee-beans.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
         </div>
       </article>
       <article class="product-card reveal-rise" style="transition-delay:60ms">
         <div class="product-card__media">
           <img src="assets/img/gallery/bread-basket.jpg" alt="A basket piled with freshly baked bread rolls." width="1476" height="1600" loading="lazy">
+          <button type="button" class="product-card__add" data-id="bread-box" data-name="Box of Assorted Bread &amp; Rolls" data-price="220" data-img="assets/img/gallery/bread-basket.jpg">
+            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
+          </button>
         </div>
         <div class="product-card__body">
           <div class="product-card__row">
@@ -718,9 +751,6 @@
             <span class="product-card__price">220 kr.</span>
           </div>
           <p class="product-card__desc">Six rolls, the baker's choice, boxed to go.</p>
-          <button type="button" class="product-card__add" data-id="bread-box" data-name="Box of Assorted Bread &amp; Rolls" data-price="220" data-img="assets/img/gallery/bread-basket.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
         </div>
       </article>
     </div>
@@ -728,11 +758,12 @@
 </section>
 
 <!-- ============ Table reservation ============ -->
-<section class="section-alt">
+<section class="section-parchment">
   <div class="container two-col">
     <div class="section-head reveal" style="margin-bottom:0">
+      <span class="ordinal">11</span>
       <span class="eyebrow">Book ahead</span>
-      <h2>Reserve a Table</h2>
+      <h2 class="reveal-clip">Reserve a Table</h2>
       <p>We hold window tables for parties of four or more. For anything smaller, walk-ins are always welcome.</p>
     </div>
     <form id="reservation-form" class="form-card reveal" novalidate>
@@ -816,6 +847,9 @@
 
 <!-- ============ Footer ============ -->
 <footer class="footer">
+  <div class="container">
+    <div class="footer__mark">Hearth <em>&amp;</em> Clove</div>
+  </div>
   <div class="container footer__top">
     <div>
       <a href="#home" class="wordmark">
