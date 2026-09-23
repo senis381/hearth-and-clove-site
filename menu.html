@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu — Hearth &amp; Clove</title>
+<meta name="description" content="Coffee, matcha, bakery, breakfast and seasonal specials at Hearth &amp; Clove, Copenhagen.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Epilogue:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="wordmark" href="index.html">Hearth &amp; Clove</a>
+  <button class="menu-btn" type="button" data-nav-open aria-expanded="false" aria-controls="nav-overlay">
+    <span class="menu-btn__bars" aria-hidden="true"><i></i><i></i></span>
+    <span>Menu</span>
+  </button>
+</header>
+
+<div class="overlay" id="nav-overlay" hidden>
+  <div class="overlay__top">
+    <button class="overlay__close" type="button" data-nav-close>Close</button>
+  </div>
+  <nav aria-label="Main">
+    <ul class="overlay__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="index.html#selection">Signature</a></li>
+      <li><a href="index.html#craft">Our craft</a></li>
+      <li><a href="index.html#visit">Visit us</a></li>
+    </ul>
+  </nav>
+  <div class="overlay__foot">
+    <span>Jægersborggade 14, 2200 Copenhagen N</span>
+    <span>Daily 7:00 &ndash; 17:00</span>
+    <span>hello@hearthandclove.example</span>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="container">
+      <span class="eyebrow">Menu</span>
+      <h1>What we have today.</h1>
+      <p>Prices in Danish kroner. The bakery list is baked in fixed numbers and changes through the day; when something is gone, it is gone until tomorrow.</p>
+    </div>
+  </section>
+
+  <section class="menu-group">
+    <div class="container menu-group__grid">
+      <div>
+        <h2>Coffee</h2>
+        <p>Light roast from a roastery two streets away. Oat, whole or skimmed &mdash; same price.</p>
+      </div>
+      <ul class="menu-list">
+        <li><span class="name">Filter</span><span class="price">38</span><span class="desc">Batch brewed, changed twice a morning. Refill 20.</span></li>
+        <li><span class="name">Espresso</span><span class="price">32</span><span class="desc">Double, pulled short.</span></li>
+        <li><span class="name">Cortado</span><span class="price">42</span><span class="desc">Equal parts espresso and milk, no foam to speak of.</span></li>
+        <li><span class="name">Flat white</span><span class="price">48</span><span class="desc">Our house pour: double ristretto, velvet milk.</span></li>
+        <li><span class="name">Cappuccino</span><span class="price">48</span><span class="desc">In a proper cup, dusted only if you ask.</span></li>
+        <li><span class="name">Iced latte</span><span class="price">52</span><span class="desc">Over hand-cut ice, from April onwards.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="menu-group">
+    <div class="container menu-group__grid">
+      <div>
+        <h2>Matcha &amp; other</h2>
+        <p>For the mornings that do not want coffee.</p>
+      </div>
+      <ul class="menu-list">
+        <li><span class="name">Matcha latte</span><span class="price">54</span><span class="desc">Ceremonial grade, whisked to order, warm or iced.</span></li>
+        <li><span class="name">Hojicha latte</span><span class="price">52</span><span class="desc">Roasted green tea, low caffeine, tastes of toast.</span></li>
+        <li><span class="name">Hot chocolate</span><span class="price">50</span><span class="desc">Dark 70%, melted into milk rather than stirred from powder.</span></li>
+        <li><span class="name">Loose leaf tea</span><span class="price">42</span><span class="desc">Assam, sencha or chamomile, in a pot for one.</span></li>
+        <li><span class="name">Fresh orange juice</span><span class="price">44</span><span class="desc">Pressed in the morning, sold until it runs out.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="menu-group">
+    <div class="container menu-group__grid">
+      <div>
+        <h2>Bakery</h2>
+        <p>Out of the oven from seven, and again around eleven.</p>
+      </div>
+      <ul class="menu-list">
+        <li><span class="name">Butter croissant</span><span class="price">36</span><span class="desc">Three days of lamination, baked dark.</span></li>
+        <li><span class="name">Kanelsnegl</span><span class="price">38</span><span class="desc">Cardamom dough, cinnamon fold, hot syrup.</span></li>
+        <li><span class="name">Tebirkes</span><span class="price">38</span><span class="desc">Poppy seed, marzipan remonce, best before nine.</span></li>
+        <li><span class="name">Sourdough loaf</span><span class="price">65</span><span class="desc">Nine-year-old starter, sixteen-hour ferment. Half loaf 35.</span></li>
+        <li><span class="name">Burnt basque cheesecake</span><span class="price">58</span><span class="desc">From noon, by the slice, while it lasts.</span></li>
+        <li><span class="name">Seeded rye</span><span class="price">55</span><span class="desc">Dense, dark, keeps for the week.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="menu-group">
+    <div class="container menu-group__grid">
+      <div>
+        <h2>Breakfast</h2>
+        <p>Served until 14:00. Everything comes on our own bread.</p>
+      </div>
+      <ul class="menu-list">
+        <li><span class="name">Bread, butter, jam</span><span class="price">65</span><span class="desc">Two slices of sourdough, cultured butter, whatever we cooked down this month.</span></li>
+        <li><span class="name">Soft eggs on rye</span><span class="price">95</span><span class="desc">Two eggs, chives, a lot of pepper.</span></li>
+        <li><span class="name">Yoghurt &amp; granola</span><span class="price">78</span><span class="desc">Skyr, oat granola baked here, fruit of the week.</span></li>
+        <li><span class="name">Avocado &amp; dukkah</span><span class="price">105</span><span class="desc">On seeded rye, lemon, plenty of olive oil.</span></li>
+        <li><span class="name">The whole table</span><span class="price">185</span><span class="desc">Bread, cheese, eggs, fruit and a coffee. For two, 320.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="menu-group">
+    <div class="container menu-group__grid">
+      <div>
+        <h2>Seasonal specials</h2>
+        <p>Autumn 2026. Written on the board by the till, changed without warning.</p>
+      </div>
+      <ul class="menu-list">
+        <li><span class="name">Plum &amp; almond galette</span><span class="price">48</span><span class="desc">Danish plums, rye crust, until the plums stop.</span></li>
+        <li><span class="name">Spiced apple bun</span><span class="price">40</span><span class="desc">Clove, cardamom, a little too much butter.</span></li>
+        <li><span class="name">Pumpkin &amp; sage toast</span><span class="price">98</span><span class="desc">Roasted squash, brown butter, sourdough.</span></li>
+        <li><span class="name">Mulled apple</span><span class="price">45</span><span class="desc">Pressed juice warmed with clove and orange peel.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <a class="btn btn--ghost" href="index.html">Back to the bakery</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <h3>Freshly baked, thoughtfully made.</h3>
+      <div class="footer__col">
+        <h4>Find us</h4>
+        <ul>
+          <li>Jægersborggade 14</li>
+          <li>2200 Copenhagen N</li>
+          <li>hello@hearthandclove.example</li>
+          <li>+45 00 00 00 00</li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>More</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="credits.html">Photo credits</a></li>
+          <li><a href="#" data-demo>Instagram</a></li>
+          <li><a href="#" data-demo>Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Hearth &amp; Clove. A fictional bakery, built as a design demo.</span>
+      <span>Photography under Creative Commons &mdash; <a class="link" href="credits.html">see credits</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

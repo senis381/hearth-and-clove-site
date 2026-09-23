@@ -1,910 +1,239 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
-<title>Hearth & Clove — Bakery &amp; Coffee House in Copenhagen</title>
-<meta name="description" content="Hearth & Clove is a bakery and coffee house on Blomstergade in Copenhagen, baking bread and pastry daily and pulling espresso from open to close.">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F3EBDD">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#16110E">
-<meta name="color-scheme" content="light dark">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearth &amp; Clove — bakery and coffee bar, Copenhagen</title>
+<meta name="description" content="A small bakery and coffee bar in Nørrebro, Copenhagen. Bread baked through the night, coffee poured slowly, open daily from seven.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Epilogue:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Hearth &amp; Clove">
-<meta property="og:title" content="Hearth &amp; Clove — Bakery &amp; Coffee House in Copenhagen">
-<meta property="og:description" content="Bread and pastry baked daily on Blomstergade, espresso pulled from open to close.">
-<meta property="og:url" content="https://senis381.github.io/hearth-and-clove-site/">
-<meta property="og:image" content="https://senis381.github.io/hearth-and-clove-site/assets/img/hero/hero-counter.jpg">
-<meta property="og:image:alt" content="The Hearth &amp; Clove counter, stacked with the morning bake.">
-<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Epilogue:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ============ Icon sprite (inline, single-weight line icons — no unicode glyphs) ============ -->
-<svg style="display:none" aria-hidden="true">
-  <symbol id="icon-cup" viewBox="0 0 24 24">
-    <path d="M4 8h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Z"/>
-    <path d="M17 9h1.5a2.5 2.5 0 0 1 0 5H17"/>
-    <path d="M7 4c.5 1 1.3 1.2 1.3 2.2 0 .7-.5 1-.5 1.8M11 4c.5 1 1.3 1.2 1.3 2.2 0 .7-.5 1-.5 1.8"/>
-  </symbol>
-  <symbol id="icon-croissant" viewBox="0 0 24 24">
-    <path d="M3 15c1-6 6.5-10 12-10 3 0 5.5 1.8 6 4-1.6-.8-3-.6-3.8.4 1.6.1 2.7 1 3 2.4-1.7-.5-3-.1-3.6 1.1 1.5.2 2.4 1 2.6 2.3-1.6-.4-2.8.1-3.2 1.3 1.2.3 1.9 1 2 2.1-4.8 1.8-11.8 1-15-3.6Z"/>
-  </symbol>
-  <symbol id="icon-clock" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="8.5"/>
-    <path d="M12 7.5V12l3.2 2"/>
-  </symbol>
-  <symbol id="icon-pin" viewBox="0 0 24 24">
-    <path d="M12 21s7-6.6 7-12A7 7 0 0 0 5 9c0 5.4 7 12 7 12Z"/>
-    <circle cx="12" cy="9" r="2.4"/>
-  </symbol>
-  <symbol id="icon-leaf" viewBox="0 0 24 24">
-    <path d="M5 19C4 11 9 4 20 4c0 11-7 16-15 15Z"/>
-    <path d="M6 18c3-4 6-6.5 12-12.5"/>
-  </symbol>
-  <symbol id="icon-close" viewBox="0 0 24 24">
-    <path d="M5 5l14 14M19 5 5 19"/>
-  </symbol>
-  <symbol id="icon-menu" viewBox="0 0 24 24">
-    <path d="M4 7h16M4 12h16M4 17h16"/>
-  </symbol>
-  <symbol id="icon-check" viewBox="0 0 24 24">
-    <path d="M4 12.6 9.4 18 20 6.6"/>
-  </symbol>
-  <symbol id="icon-bag" viewBox="0 0 24 24">
-    <path d="M6 8h12l1 12.5a1 1 0 0 1-1 1.5H6a1 1 0 0 1-1-1.5L6 8Z"/>
-    <path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>
-  </symbol>
-  <symbol id="icon-chevron-left" viewBox="0 0 24 24">
-    <path d="M15 5 8 12l7 7"/>
-  </symbol>
-  <symbol id="icon-chevron-right" viewBox="0 0 24 24">
-    <path d="M9 5l7 7-7 7"/>
-  </symbol>
-  <symbol id="icon-arrow-up-right" viewBox="0 0 24 24">
-    <path d="M6 18 18 6M9 6h9v9"/>
-  </symbol>
-  <symbol id="icon-mail" viewBox="0 0 24 24">
-    <path d="M3.5 6h17v12h-17z"/>
-    <path d="m4 6.5 8 6.5 8-6.5"/>
-  </symbol>
-  <symbol id="icon-phone" viewBox="0 0 24 24">
-    <path d="M6 3.5 9 6c.3 1.3.9 2.6 1.8 3.8L9.2 11.4c1 2 2.4 3.4 4.4 4.4l1.6-1.6c1.2.9 2.5 1.5 3.8 1.8l2.5 3c-1 1.2-2.4 1.8-4 1.6C11.5 20 4 12.5 3.4 6.5c-.2-1.6.4-3 1.6-4Z"/>
-  </symbol>
-  <symbol id="icon-instagram" viewBox="0 0 24 24">
-    <rect x="3.5" y="3.5" width="17" height="17" rx="5"/>
-    <circle cx="12" cy="12" r="4"/>
-    <circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/>
-  </symbol>
-  <symbol id="icon-facebook" viewBox="0 0 24 24">
-    <path d="M14.5 21v-7h2.4l.4-3h-2.8V9c0-.9.3-1.5 1.7-1.5h1.3V4.8c-.2 0-1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H9.5v3H12v7Z"/>
-  </symbol>
-  <symbol id="icon-tiktok" viewBox="0 0 24 24">
-    <path d="M13 3v11.2a2.6 2.6 0 1 1-2-2.5"/>
-    <path d="M13 3c.4 2.4 2 4 4.5 4.2"/>
-  </symbol>
-</svg>
+<header class="topbar">
+  <a class="wordmark" href="index.html">Hearth &amp; Clove</a>
+  <button class="menu-btn" type="button" data-nav-open aria-expanded="false" aria-controls="nav-overlay">
+    <span class="menu-btn__bars" aria-hidden="true"><i></i><i></i></span>
+    <span>Menu</span>
+  </button>
+</header>
 
-<!-- ============ Nav ============ -->
-<nav class="nav">
-  <div class="container nav__row">
-    <a href="#home" class="wordmark">
-      <svg class="icon" viewBox="0 0 24 24"><use href="#icon-croissant"/></svg>
-      Hearth &amp; Clove
-    </a>
-    <ul class="nav__links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#story">Our Story</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#visit">Visit Us</a></li>
+<div class="overlay" id="nav-overlay" hidden>
+  <div class="overlay__top">
+    <button class="overlay__close" type="button" data-nav-close>Close</button>
+  </div>
+  <nav aria-label="Main">
+    <ul class="overlay__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="#selection">Signature</a></li>
+      <li><a href="#craft">Our craft</a></li>
+      <li><a href="#visit">Visit us</a></li>
     </ul>
-    <div class="nav__cta">
-      <a href="#order" class="btn btn-primary btn-sm">Order Now</a>
-      <button type="button" class="cart-btn" id="cart-open" aria-label="Open your order">
-        <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-bag"/></svg>
-        <span class="cart-badge" hidden>0</span>
-      </button>
-      <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
-      <label for="nav-toggle" class="nav-toggle-label" aria-label="Open menu">
-        <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-menu"/></svg>
-      </label>
-    </div>
-  </div>
-  <div class="nav-drawer" aria-hidden="true">
-    <div class="nav-drawer__scrim"></div>
-    <div class="nav-drawer__panel">
-      <button type="button" class="nav-drawer__close" aria-label="Close menu">
-        <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-close"/></svg>
-      </button>
-      <ul class="nav-drawer__links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#story">Our Story</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#visit">Visit Us</a></li>
-      </ul>
-      <div class="nav-drawer__cta">
-        <a href="#order" class="btn btn-primary btn-block">Order Now</a>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<main>
-
-<!-- ============ Hero ============ -->
-<section class="hero" id="home">
-  <div class="hero__media">
-    <img src="assets/img/hero/hero-counter.jpg" alt="The counter at opening: pastries under glass cloches on the oak top, plates stacked behind." width="1600" height="1066" fetchpriority="high">
-  </div>
-  <div class="hero__scrim"></div>
-  <div class="hero__content container">
-    <h1><span class="hero__word" style="--d:0">Freshly</span> <span class="hero__word" style="--d:50">baked.</span><br><span class="hero__word" style="--d:110">Slowly</span> <span class="hero__word" style="--d:160">enjoyed.</span></h1>
-    <p class="hero__sub hero-in" style="--d:280">A neighborhood bakery and coffee house on Blomstergade, baking bread and pastry every morning and pulling espresso until close.</p>
-    <div class="hero__actions hero-in" style="--d:360">
-      <a href="#menu" class="btn btn-primary">See the menu</a>
-      <a href="#visit" class="btn btn-secondary">Visit us</a>
-    </div>
-    <div class="hero__info hero-in" style="--d:440">
-      <svg class="icon" viewBox="0 0 24 24"><use href="#icon-clock"/></svg>
-      Open Mon–Fri 7:30–18:00, Sat–Sun 8:00–17:00
-    </div>
-  </div>
-</section>
-
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track">
-    <span>Butter croissants &middot; Cardamom buns &middot; Flat whites &middot; Basque cheesecake &middot; Cinnamon rolls &middot; Cold brew &middot; Butter croissants &middot; Cardamom buns &middot; Flat whites &middot; Basque cheesecake &middot; Cinnamon rolls &middot; Cold brew &middot; </span>
-    <span>Butter croissants &middot; Cardamom buns &middot; Flat whites &middot; Basque cheesecake &middot; Cinnamon rolls &middot; Cold brew &middot; Butter croissants &middot; Cardamom buns &middot; Flat whites &middot; Basque cheesecake &middot; Cinnamon rolls &middot; Cold brew &middot; </span>
+  </nav>
+  <div class="overlay__foot">
+    <span>Jægersborggade 14, 2200 Copenhagen N</span>
+    <span>Daily 7:00 &ndash; 17:00</span>
+    <span>hello@hearthandclove.example</span>
   </div>
 </div>
 
-<div class="deckle deckle--dark-to-light"><div class="deckle__inner"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div></div>
+<main id="main">
 
-<!-- ============ Favorites ============ -->
-<section id="favorites">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="ordinal">01</span>
-      <span class="eyebrow">On the counter</span>
-      <h2 class="reveal-clip">A few of our favorites</h2>
-      <p>The things people come back for — pulled from the daily case and the espresso bar.</p>
+  <!-- 01 hero -->
+  <section class="section hero">
+    <div class="container">
+      <span class="eyebrow">Bakery &amp; coffee bar &middot; Nørrebro</span>
+      <h1 class="hero__title">Bread, <em>butter</em>, and a slow Copenhagen morning.</h1>
+      <div class="hero__meta">
+        <span>Baked through the night</span>
+        <span>Open daily from 7</span>
+        <span>Est. 2016</span>
+      </div>
+      <figure class="hero__figure reveal">
+        <img src="assets/img/hero/cafe-windows.jpg" alt="An empty café under tall arched windows, plants along the sills, chairs still tucked in." width="1024" height="683" fetchpriority="high">
+        <figcaption class="hero__caption">The room at ten past seven, before the first table fills.</figcaption>
+      </figure>
     </div>
-    <div class="product-grid">
+  </section>
 
-      <article class="product-card reveal-rise">
-        <div class="product-card__media">
-          <img src="assets/img/products/butter-croissant.jpg" alt="A whole, flaky butter croissant." width="1000" height="750" loading="lazy">
-          <button type="button" class="product-card__add" data-id="butter-croissant" data-name="Butter Croissant" data-price="32" data-img="assets/img/products/butter-croissant.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
-        </div>
-        <div class="product-card__body">
-          <div class="product-card__row">
-            <h3 class="product-card__name">Butter Croissant</h3>
-            <span class="product-card__price">32 kr.</span>
-          </div>
-          <p class="product-card__desc">Laminated over three days, baked to order each morning.</p>
-        </div>
-      </article>
-
-      <article class="product-card reveal-rise" style="transition-delay:60ms">
-        <div class="product-card__media">
-          <img src="assets/img/products/cinnamon-roll.jpg" alt="Cinnamon rolls cooling on parchment, still glossy." width="1000" height="750" loading="lazy">
-          <button type="button" class="product-card__add" data-id="cinnamon-roll" data-name="Cinnamon Roll" data-price="38" data-img="assets/img/products/cinnamon-roll.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
-        </div>
-        <div class="product-card__body">
-          <div class="product-card__row">
-            <h3 class="product-card__name">Cinnamon Roll</h3>
-            <span class="product-card__price">38 kr.</span>
-          </div>
-          <p class="product-card__desc">Cardamom-laced dough, brown butter filling, glazed while warm.</p>
-        </div>
-      </article>
-
-      <article class="product-card reveal-rise" style="transition-delay:120ms">
-        <div class="product-card__media">
-          <img src="assets/img/products/cappuccino.jpg" alt="A cappuccino in a white cup with a dusting of cocoa." width="1000" height="666" loading="lazy">
-          <button type="button" class="product-card__add" data-id="cappuccino" data-name="Cappuccino" data-price="42" data-img="assets/img/products/cappuccino.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
-        </div>
-        <div class="product-card__body">
-          <div class="product-card__row">
-            <h3 class="product-card__name">Cappuccino</h3>
-            <span class="product-card__price">42 kr.</span>
-          </div>
-          <p class="product-card__desc">Double espresso, steamed milk, poured thick.</p>
-        </div>
-      </article>
-
-      <article class="product-card reveal-rise" style="transition-delay:180ms">
-        <div class="product-card__media">
-          <img src="assets/img/products/flat-white.jpg" alt="A flat white coffee with tight, velvety latte art." width="1000" height="800" loading="lazy">
-          <button type="button" class="product-card__add" data-id="flat-white" data-name="Flat White" data-price="44" data-img="assets/img/products/flat-white.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
-        </div>
-        <div class="product-card__body">
-          <div class="product-card__row">
-            <h3 class="product-card__name">Flat White</h3>
-            <span class="product-card__price">44 kr.</span>
-          </div>
-          <p class="product-card__desc">A smaller, stronger pour for people who want to taste the coffee.</p>
-        </div>
-      </article>
-
-      <article class="product-card reveal-rise" style="transition-delay:0ms">
-        <div class="product-card__media">
-          <img src="assets/img/products/iced-latte.jpg" alt="A macro view of an iced latte in a glass, layered with milk and espresso." width="1024" height="684" loading="lazy">
-          <button type="button" class="product-card__add" data-id="iced-latte" data-name="Iced Latte" data-price="46" data-img="assets/img/products/iced-latte.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
-        </div>
-        <div class="product-card__body">
-          <div class="product-card__row">
-            <h3 class="product-card__name">Iced Latte</h3>
-            <span class="product-card__price">46 kr.</span>
-          </div>
-          <p class="product-card__desc">Cold milk over a double shot, no melted-ice compromise.</p>
-        </div>
-      </article>
-
-      <article class="product-card reveal-rise" style="transition-delay:60ms">
-        <div class="product-card__media">
-          <img src="assets/img/products/matcha-latte.jpg" alt="A matcha latte poured into a green cup, rosetta on top." width="874" height="1000" loading="lazy">
-          <button type="button" class="product-card__add" data-id="matcha-latte" data-name="Matcha Latte" data-price="44" data-img="assets/img/products/matcha-latte.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
-        </div>
-        <div class="product-card__body">
-          <div class="product-card__row">
-            <h3 class="product-card__name">Matcha Latte</h3>
-            <span class="product-card__price">44 kr.</span>
-          </div>
-          <p class="product-card__desc">Ceremonial-grade matcha, whisked, not just stirred.</p>
-        </div>
-      </article>
-
-      <article class="product-card reveal-rise" style="transition-delay:120ms">
-        <div class="product-card__media">
-          <img src="assets/img/products/basque-cheesecake.jpg" alt="A slice of Basque-style cheesecake with a deeply caramelized top." width="1024" height="683" loading="lazy">
-          <button type="button" class="product-card__add" data-id="basque-cheesecake" data-name="Basque Cheesecake" data-price="52" data-img="assets/img/products/basque-cheesecake.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
-        </div>
-        <div class="product-card__body">
-          <div class="product-card__row">
-            <h3 class="product-card__name">Basque Cheesecake</h3>
-            <span class="product-card__price">52 kr.</span>
-          </div>
-          <p class="product-card__desc">Burnt on purpose, no crust, barely set in the middle.</p>
-        </div>
-      </article>
-
-      <article class="product-card reveal-rise" style="transition-delay:180ms">
-        <div class="product-card__media">
-          <img src="assets/img/products/tiramisu.jpg" alt="A slice of tiramisu dusted with cocoa on a beige plate." width="939" height="1000" loading="lazy">
-          <button type="button" class="product-card__add" data-id="tiramisu" data-name="Tiramisu" data-price="56" data-img="assets/img/products/tiramisu.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
-        </div>
-        <div class="product-card__body">
-          <div class="product-card__row">
-            <h3 class="product-card__name">Tiramisu</h3>
-            <span class="product-card__price">56 kr.</span>
-          </div>
-          <p class="product-card__desc">Espresso-soaked, mascarpone-heavy, made a day ahead.</p>
-        </div>
-      </article>
-
+  <!-- 02 brand intro -->
+  <section class="section section--tint">
+    <div class="container split">
+      <figure class="reveal">
+        <img src="assets/img/story/cup-and-flowers.jpg" alt="A cup of coffee on the windowsill beside a small vase of flowers." width="960" height="640" loading="lazy">
+      </figure>
+      <div class="reveal">
+        <span class="eyebrow">Who we are</span>
+        <p class="lede">A neighbourhood bakery that keeps its hours honest and its list short.</p>
+        <p>We opened on a corner in Nørrebro with one oven, one grinder and a rule we still follow: bake what we can finish in a day, and sell it the day it is baked. Nothing waits in a freezer for a busier morning.</p>
+        <p>The sourdough starter is nine years old now. The coffee comes from a roastery two streets away, roasted light and pulled short. The rest is bread, butter, and enough chairs for the people who live around here.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ Baked today ============ -->
-<section class="section-dark">
-  <div class="bleed">
-    <div class="section-head reveal">
-      <span class="ordinal">02</span>
-      <span class="eyebrow">Today's board</span>
-      <h2 class="reveal-clip">Baked today</h2>
-      <p>A short, changing list — what came out of the oven this morning.</p>
+  <!-- 03 signature selection -->
+  <section class="section" id="selection">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Signature selection</h2>
+        <p>Five things we make every day, in the order the trays come out of the oven. The full list, with prices, lives on the menu.</p>
+      </div>
+      <div class="selection">
+
+        <article class="pick pick--wide reveal">
+          <figure><img src="assets/img/gallery/croissants-closeup.jpg" alt="A croissant on a wooden board, close enough to count the layers." width="1024" height="683" loading="lazy"></figure>
+          <div class="pick__body"><h3>Butter croissant</h3><span class="pick__note">From 7:00</span></div>
+          <p>Laminated over three days with Danish butter, baked dark enough to shatter when you tear it.</p>
+        </article>
+
+        <article class="pick pick--narrow pick--offset reveal">
+          <figure><img src="assets/img/products/cinnamon-roll.jpg" alt="Cinnamon rolls cooling on parchment, still glossy." width="960" height="640" loading="lazy"></figure>
+          <div class="pick__body"><h3>Kanelsnegl</h3><span class="pick__note">Two bakes</span></div>
+          <p>Cardamom in the dough, cinnamon in the fold, brushed with syrup while still hot.</p>
+        </article>
+
+        <article class="pick pick--narrow reveal">
+          <figure><img src="assets/img/products/flat-white.jpg" alt="A flat white coffee with tight, velvety latte art." width="960" height="640" loading="lazy"></figure>
+          <div class="pick__body"><h3>Flat white</h3><span class="pick__note">All day</span></div>
+          <p>A double ristretto under steamed milk, light roast from a roastery two streets away.</p>
+        </article>
+
+        <article class="pick pick--wide pick--offset reveal">
+          <figure><img src="assets/img/products/matcha-latte.jpg" alt="A matcha latte poured into a green cup, rosetta on top." width="960" height="640" loading="lazy"></figure>
+          <div class="pick__body"><h3>Matcha latte</h3><span class="pick__note">Ceremonial grade</span></div>
+          <p>Whisked to order, served warm or over ice. Oat milk unless you say otherwise.</p>
+        </article>
+
+        <article class="pick pick--tall reveal">
+          <figure><img src="assets/img/products/basque-cheesecake.jpg" alt="A slice of Basque-style cheesecake with a deeply caramelized top." width="960" height="640" loading="lazy"></figure>
+          <div class="pick__body"><h3>Burnt basque cheesecake</h3><span class="pick__note">From noon</span></div>
+          <p>Baked hot and fast until the top goes almost too far, then left to settle overnight.</p>
+        </article>
+
+        <div class="selection__more reveal">
+          <a class="btn" href="menu.html">See the full menu</a>
+        </div>
+
+      </div>
     </div>
-    <div class="specials-strip">
-      <article class="special-card special-card--today reveal-rise">
-        <div class="special-card__media">
-          <img src="assets/img/gallery/bread-basket.jpg" alt="Wooden shelves lined with the day's loaves." width="1476" height="1600" loading="lazy">
-        </div>
-        <div class="special-card__body">
-          <h3 class="special-card__name">Rugbrød Sourdough Loaf</h3>
-          <p class="special-card__price">45 kr. per loaf</p>
-        </div>
-      </article>
-      <article class="special-card reveal-rise" style="transition-delay:60ms">
-        <div class="special-card__media">
-          <img src="assets/img/gallery/counter-display.jpg" alt="A Danish pastry with a glossy glaze, fresh from the case." width="1600" height="1200" loading="lazy">
-        </div>
-        <div class="special-card__body">
-          <h3 class="special-card__name">Seasonal Danish Pastry</h3>
-          <p class="special-card__price">34 kr.</p>
-        </div>
-      </article>
-      <article class="special-card reveal-rise" style="transition-delay:120ms">
-        <div class="special-card__media">
-          <img src="assets/img/gallery/cinnamon-rolls.jpg" alt="A tray of cinnamon rolls straight out of the oven." width="1600" height="963" loading="lazy">
-        </div>
-        <div class="special-card__body">
-          <h3 class="special-card__name">Cinnamon Swirl Loaf</h3>
-          <p class="special-card__price">40 kr., sold by the slice</p>
-        </div>
-      </article>
-      <article class="special-card reveal-rise" style="transition-delay:180ms">
-        <div class="special-card__media">
-          <img src="assets/img/hero/hero-counter.jpg" alt="Pastries under glass cloches on the counter." width="1600" height="1066" loading="lazy">
-        </div>
-        <div class="special-card__body">
-          <h3 class="special-card__name">Morning Pastry Selection</h3>
-          <p class="special-card__price">Ask what's fresh</p>
-        </div>
-      </article>
+  </section>
+
+  <!-- 04 copenhagen atmosphere -->
+  <section class="section section--tint">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>A corner of Copenhagen</h2>
+        <p>Grey water, white walls, long light. The city sets the pace and we mostly follow it.</p>
+      </div>
+      <div class="frames" data-lightbox>
+        <button class="frame frame--wide reveal" type="button">
+          <img src="assets/img/gallery/copenhagen-canal.jpg" alt="Wooden boats moored along a Copenhagen canal on an overcast morning." width="1024" height="683" loading="lazy">
+        </button>
+        <button class="frame frame--half reveal" type="button">
+          <img src="assets/img/gallery/white-cafe.jpg" alt="A white-walled café with light wood tables and a bright tabletop by the window." width="1024" height="768" loading="lazy">
+        </button>
+        <button class="frame frame--half reveal" type="button">
+          <img src="assets/img/gallery/counter-display.jpg" alt="The counter at opening: pastries under glass cloches on the oak top, plates stacked behind." width="960" height="640" loading="lazy">
+        </button>
+        <p class="frames__note reveal">
+          <span>Jægersborggade, Nørrebro</span>
+          <span>Photographs licensed under Creative Commons &mdash; <a class="link" href="credits.html">credits</a></span>
+        </p>
+      </div>
     </div>
-    <p class="specials-note">Available until sold out.</p>
-  </div>
-</section>
+  </section>
 
-<div class="deckle" style="--deckle-bg:var(--color-espresso);--deckle-fill:var(--color-parchment)"><div class="deckle__inner"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div></div>
-
-<!-- ============ Full menu ============ -->
-<section id="menu" class="section-parchment">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="ordinal">03</span>
-      <span class="eyebrow">Everything we make</span>
-      <h2 class="reveal-clip">Full Menu</h2>
-      <p>Prices in Danish kroner. Ask at the counter about oat and soy milk — no charge either way.</p>
-    </div>
-
-    <div class="menu-layout">
-    <input type="radio" name="menu-tab" id="tab-coffee" class="menu-radio" checked>
-    <input type="radio" name="menu-tab" id="tab-iced" class="menu-radio">
-    <input type="radio" name="menu-tab" id="tab-matcha" class="menu-radio">
-    <input type="radio" name="menu-tab" id="tab-other" class="menu-radio">
-    <input type="radio" name="menu-tab" id="tab-pastries" class="menu-radio">
-    <input type="radio" name="menu-tab" id="tab-cakes" class="menu-radio">
-    <input type="radio" name="menu-tab" id="tab-breakfast" class="menu-radio">
-
-    <div class="menu-tabs">
-      <span class="menu-tabs__indicator" aria-hidden="true"></span>
-      <label for="tab-coffee" class="tab-label">Coffee</label>
-      <label for="tab-iced" class="tab-label">Iced &amp; Cold</label>
-      <label for="tab-matcha" class="tab-label">Matcha</label>
-      <label for="tab-other" class="tab-label">Other Drinks</label>
-      <label for="tab-pastries" class="tab-label">Pastries</label>
-      <label for="tab-cakes" class="tab-label">Cakes &amp; Sweets</label>
-      <label for="tab-breakfast" class="tab-label">Breakfast</label>
-    </div>
-    <!-- Note: the seven radios above are DOM-siblings preceding .menu-panels so the
-         #tab-x:checked ~ .menu-panels [data-for="x"] crossfade rule in style.css matches. -->
-
-    <div class="menu-panels">
-      <div class="menu-panel" data-for="coffee">
-        <ul class="menu-list">
-          <li class="menu-item"><span class="menu-item__name">Espresso</span><span class="menu-item__price">28 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Macchiato</span><span class="menu-item__price">32 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Cortado</span><span class="menu-item__price">36 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Cappuccino</span><span class="menu-item__price">42 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Flat White</span><span class="menu-item__price">44 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Caffè Latte</span><span class="menu-item__price">42 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Americano</span><span class="menu-item__price">34 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Mocha</span><span class="menu-item__price">46 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Filter Coffee, Cup</span><span class="menu-item__price">30 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Filter Coffee, Pot for Two</span><span class="menu-item__price">55 kr.</span></li>
+  <!-- 05 our craft -->
+  <section class="section" id="craft">
+    <div class="container split split--flip">
+      <div class="reveal">
+        <span class="eyebrow">Our craft</span>
+        <p class="lede">Three decisions we made early and never got around to changing.</p>
+        <ul class="craft__list">
+          <li><b>01</b><span><strong>One long ferment.</strong> The dough is mixed in the afternoon and left overnight at cellar temperature. Sixteen hours, no shortcuts, no improver.</span></li>
+          <li><b>02</b><span><strong>Whatever the day gives.</strong> The bakery list changes with the season and the market, so some weeks there is rhubarb and some weeks there is not.</span></li>
+          <li><b>03</b><span><strong>Sold out means closed.</strong> We bake a fixed number of everything. When the shelf is empty we stop, wipe down, and start again tomorrow.</span></li>
         </ul>
       </div>
-      <div class="menu-panel" data-for="iced">
-        <ul class="menu-list">
-          <li class="menu-item"><span class="menu-item__name">Iced Latte</span><span class="menu-item__price">46 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Iced Americano</span><span class="menu-item__price">38 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Cold Brew</span><span class="menu-item__price">42 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Iced Mocha</span><span class="menu-item__price">48 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Iced Cortado</span><span class="menu-item__price">40 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Affogato</span><span class="menu-item__price">48 kr.</span></li>
-        </ul>
+      <figure class="reveal">
+        <img src="assets/img/story/founder-hands.jpg" alt="A baker's hands shaping a round of dough on a flour-dusted table." width="960" height="640" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- 06 visit us -->
+  <section class="section section--tint" id="visit">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Visit us</h2>
+        <p>No bookings, no waiting list. There is usually a table after nine, and always a spot at the window bar.</p>
       </div>
-      <div class="menu-panel" data-for="matcha">
-        <ul class="menu-list">
-          <li class="menu-item"><span class="menu-item__name">Matcha Latte</span><span class="menu-item__price">44 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Iced Matcha Latte</span><span class="menu-item__price">46 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Matcha Latte, Oat Milk</span><span class="menu-item__price">46 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Hojicha Latte</span><span class="menu-item__price">42 kr.</span></li>
-        </ul>
-      </div>
-      <div class="menu-panel" data-for="other">
-        <ul class="menu-list">
-          <li class="menu-item"><span class="menu-item__name">Hot Chocolate</span><span class="menu-item__price">38 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Chai Latte</span><span class="menu-item__price">40 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Fresh Mint Tea</span><span class="menu-item__price">32 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Ginger &amp; Lemon Tea</span><span class="menu-item__price">32 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Sparkling Elderflower</span><span class="menu-item__price">36 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Fresh Orange Juice</span><span class="menu-item__price">38 kr.</span></li>
-        </ul>
-      </div>
-      <div class="menu-panel" data-for="pastries">
-        <ul class="menu-list">
-          <li class="menu-item"><span class="menu-item__name">Butter Croissant</span><span class="menu-item__price">32 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Pain au Chocolat</span><span class="menu-item__price">34 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Cinnamon Roll</span><span class="menu-item__price">38 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Cardamom Bun</span><span class="menu-item__price">36 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Almond Croissant</span><span class="menu-item__price">40 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Rye Sourdough, Butter</span><span class="menu-item__price">30 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Seeded Rugbrød Roll</span><span class="menu-item__price">28 kr.</span></li>
-        </ul>
-      </div>
-      <div class="menu-panel" data-for="cakes">
-        <ul class="menu-list">
-          <li class="menu-item"><span class="menu-item__name">Basque Cheesecake</span><span class="menu-item__price">52 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Tiramisu</span><span class="menu-item__price">56 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Carrot Cake</span><span class="menu-item__price">48 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Chocolate Fondant Cake</span><span class="menu-item__price">54 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Lemon Tart</span><span class="menu-item__price">50 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Seasonal Fruit Tart</span><span class="menu-item__price">52 kr.</span></li>
-        </ul>
-      </div>
-      <div class="menu-panel" data-for="breakfast">
-        <ul class="menu-list">
-          <li class="menu-item"><span class="menu-item__name">Morning Plate — Bread, Cheese, Jam, Butter</span><span class="menu-item__price">78 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Soft-Boiled Eggs &amp; Rye Toast</span><span class="menu-item__price">62 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Overnight Oats, Seasonal Berries</span><span class="menu-item__price">58 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Avocado on Rye</span><span class="menu-item__price">68 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Granola &amp; Yogurt Bowl</span><span class="menu-item__price">56 kr.</span></li>
-          <li class="menu-item"><span class="menu-item__name">Smørrebrød of the Day</span><span class="menu-item__price">72 kr.</span></li>
+      <div class="split">
+        <div class="reveal">
+          <address class="address">Jægersborggade 14<br>2200 Copenhagen N<br>Denmark</address>
+          <p class="muted">Five minutes from Nørrebro station, on the quiet end of the street. Bikes fit along the railing outside.</p>
+          <div class="actions">
+            <a class="btn" href="menu.html">Read the menu</a>
+            <a class="btn btn--ghost" href="#" data-demo>Open in maps</a>
+          </div>
+        </div>
+        <ul class="hours reveal">
+          <li><span>Monday &ndash; Friday</span><span>7:00 &ndash; 17:00</span></li>
+          <li><span>Saturday</span><span>8:00 &ndash; 17:00</span></li>
+          <li><span>Sunday</span><span>8:00 &ndash; 16:00</span></li>
+          <li><span>Bakery counter</span><span>from 7:00 until sold out</span></li>
+          <li><span>Kitchen &amp; breakfast</span><span>until 14:00</span></li>
         </ul>
       </div>
     </div>
-    </div>
-  </div>
-</section>
-
-<div class="deckle" style="--deckle-bg:var(--color-parchment);--deckle-fill:var(--color-espresso)"><div class="deckle__inner"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div></div>
-
-<!-- ============ Our Story ============ -->
-<section id="story" class="section-dark">
-  <div class="container story">
-    <div class="story__media story__media--hands reveal-rise">
-      <img src="assets/img/story/founder-hands.jpg" alt="A baker's hands shaping a round of dough on a flour-dusted table." width="1600" height="1200" loading="lazy">
-    </div>
-    <div class="story__text reveal">
-      <div class="story__lede">
-      <span class="ordinal">04</span>
-      <span class="eyebrow">Our Story</span>
-      <h2 class="reveal-clip">Maren Voss opened the doors in 2019</h2>
-      <blockquote class="pull-quote">Nothing about the place is trying to be more than what it is.</blockquote>
-      </div>
-      <div class="story__body">
-      <p>Maren trained in Lyon for three years before she came home to Copenhagen — long shifts at a small boulangerie where the baker refused to explain anything twice and the bread was better for it. She left knowing how to laminate dough at 4am with her eyes half closed, and how little that actually has to do with running a bakery.</p>
-      <p>Hearth &amp; Clove started as one oven, one espresso machine, and eleven tables in a space that used to be a bicycle repair shop on Blomstergade. The first winter, Maren baked alone before sunrise and served the counter herself until the regulars started showing up early enough to help carry trays. Some of them still do.</p>
-      <p>The name is plain on purpose — a hearth for the ovens, clove for the spice drawer she never stops reaching for. Nothing about the place is trying to be more than what it is: bread that takes the time it takes, coffee pulled by someone paying attention, and enough chairs that nobody has to rush their cup.</p>
-      <p class="story__signoff">— Maren</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ Philosophy ============ -->
-<section>
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="ordinal">05</span>
-      <span class="eyebrow">What we believe</span>
-      <h2 class="reveal-clip">Our Philosophy</h2>
-    </div>
-    <div class="philosophy-grid">
-      <div class="philosophy-card reveal">
-        <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-leaf"/></svg>
-        <h3>Slow fermentation, always</h3>
-        <p>Our doughs rest overnight, sometimes two nights. Good bread can't be rushed, and we're not interested in the shortcut that pretends it can.</p>
-      </div>
-      <div class="philosophy-card reveal" style="transition-delay:60ms">
-        <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
-        <h3>Local when it makes sense</h3>
-        <p>Danish rye, Danish butter, Danish eggs. The coffee travels a long way to get here — nearly everything else doesn't have to.</p>
-      </div>
-      <div class="philosophy-card reveal" style="transition-delay:120ms">
-        <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-cup"/></svg>
-        <h3>A seat, not just a bag</h3>
-        <p>Half our tables face the window on purpose. This is a place to stay a while, not just a counter to grab from on the way past.</p>
-      </div>
-      <div class="philosophy-card reveal" style="transition-delay:180ms">
-        <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-clock"/></svg>
-        <h3>Honest pricing</h3>
-        <p>One price on the board. No upsell script at the till, no surprise at the register — what you see is what you pay.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="deckle deckle--light-to-dark"><div class="deckle__inner"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div></div>
-
-<!-- ============ Gallery ============ -->
-<section id="gallery" class="section-dark">
-  <div class="bleed">
-    <div class="section-head reveal">
-      <span class="ordinal">06</span>
-      <span class="eyebrow">A look inside</span>
-      <h2 class="reveal-clip">Gallery</h2>
-      <p>The counter, the ovens, the cups — a few frames from an ordinary morning.</p>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-item tall reveal-rise">
-        <button type="button" data-full="assets/img/gallery/barista-pour.jpg" data-caption="Pouring the morning's first latte.">
-          <img src="assets/img/gallery/barista-pour.jpg" alt="A barista's hands pouring steamed milk into an espresso to form latte art." width="1280" height="1600" loading="lazy">
-        </button>
-      </div>
-      <div class="gallery-item wide reveal-rise" style="transition-delay:60ms">
-        <button type="button" data-full="assets/img/gallery/cafe-exterior.jpg" data-caption="A café storefront on a quiet corner.">
-          <img src="assets/img/gallery/cafe-exterior.jpg" alt="A corner bakery front under a deep red awning, its windows full of the day's bread." width="1600" height="1200" loading="lazy">
-        </button>
-      </div>
-      <div class="gallery-item reveal-rise" style="transition-delay:120ms">
-        <button type="button" data-full="assets/img/gallery/coffee-beans.jpg" data-caption="Beans, fresh off the roast.">
-          <img src="assets/img/gallery/coffee-beans.jpg" alt="A close-up texture of freshly roasted coffee beans." width="1600" height="1066" loading="lazy">
-        </button>
-      </div>
-      <div class="gallery-item tall reveal-rise" style="transition-delay:180ms">
-        <button type="button" data-full="assets/img/gallery/bread-basket.jpg" data-caption="This morning's bread basket.">
-          <img src="assets/img/gallery/bread-basket.jpg" alt="Wooden shelves lined with the day's loaves." width="1476" height="1600" loading="lazy">
-        </button>
-      </div>
-      <div class="gallery-item reveal-rise" style="transition-delay:0ms">
-        <button type="button" data-full="assets/img/gallery/counter-display.jpg" data-caption="Danish pastry, straight from the case.">
-          <img src="assets/img/gallery/counter-display.jpg" alt="A Danish pastry with a glossy glaze, fresh from the case." width="1600" height="1200" loading="lazy">
-        </button>
-      </div>
-      <div class="gallery-item reveal-rise" style="transition-delay:60ms">
-        <button type="button" data-full="assets/img/gallery/croissants-closeup.jpg" data-caption="A small nod to the counter, drawn rather than photographed.">
-          <img src="assets/img/gallery/croissants-closeup.jpg" alt="A croissant on a wooden board, close enough to count the layers." width="1024" height="1024" loading="lazy">
-        </button>
-      </div>
-      <div class="gallery-item reveal-rise" style="transition-delay:120ms">
-        <button type="button" data-full="assets/img/gallery/espresso-pull.jpg" data-caption="Pulling a shot.">
-          <img src="assets/img/gallery/espresso-pull.jpg" alt="An espresso machine mid-pour into a small cup." width="1024" height="683" loading="lazy">
-        </button>
-      </div>
-      <div class="gallery-item wide reveal-rise" style="transition-delay:180ms">
-        <button type="button" data-full="assets/img/gallery/latte-art.jpg" data-caption="The last of the pour, right before it sets.">
-          <img src="assets/img/gallery/latte-art.jpg" alt="A flat white coffee mid-pour, foam settling into a pattern on top." width="1600" height="1068" loading="lazy">
-        </button>
-      </div>
-      <div class="gallery-item reveal-rise" style="transition-delay:0ms">
-        <button type="button" data-full="assets/img/gallery/cinnamon-rolls.jpg" data-caption="Sliced and ready for the case.">
-          <img src="assets/img/gallery/cinnamon-rolls.jpg" alt="A tray of cinnamon rolls straight out of the oven." width="1600" height="963" loading="lazy">
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Lightbox (shared overlay, populated by JS) -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <div class="lightbox__scrim"></div>
-  <button type="button" class="lightbox__close" aria-label="Close">
-    <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-close"/></svg>
-  </button>
-  <button type="button" class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">
-    <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-chevron-left"/></svg>
-  </button>
-  <button type="button" class="lightbox__nav lightbox__nav--next" aria-label="Next image">
-    <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-chevron-right"/></svg>
-  </button>
-  <figure class="lightbox__figure">
-    <img src="" alt="">
-  </figure>
-  <p class="lightbox__caption"></p>
-</div>
-
-<!-- ============ A place to slow down ============ -->
-<section class="section-dark slowdown">
-  <div class="slowdown__media">
-    <img src="assets/img/story/interior-wide.jpg" alt="The back room in the afternoon: warm lamps, wooden tables, plants along the wall." width="1200" height="1600" loading="lazy">
-  </div>
-  <div class="container">
-    <div class="slowdown__text reveal">
-      <span class="ordinal">07</span>
-      <span class="eyebrow">Take your time</span>
-      <h2 class="reveal-clip">A place to slow down</h2>
-      <p>There's no rush here, and no Wi-Fi password taped to the espresso machine to hint otherwise. The window seats fill first, but the back tables are quieter, and the light in the afternoon comes in low and warm through the east-facing glass.</p>
-      <p>Bring a book, bring a friend, bring nothing at all. The chairs don't have a time limit on them.</p>
-    </div>
-  </div>
-</section>
-
-<div class="deckle deckle--dark-to-light"><div class="deckle__inner"><svg viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0,28 L0,14.0 L40,10.8 L80,7.7 L120,16.7 L160,6.3 L200,14.6 L240,11.6 L280,6.0 L320,14.1 L360,5.7 L400,12.8 L440,6.3 L480,6.6 L520,12.6 L560,19.9 L600,7.2 L640,9.0 L680,16.3 L720,22.1 L760,15.4 L800,12.1 L840,22.6 L880,5.8 L920,20.5 L960,10.2 L1000,7.6 L1040,7.1 L1080,10.6 L1120,19.7 L1160,8.3 L1200,15.5 L1200,28 Z"/></svg></div></div>
-
-<!-- ============ Visit Us ============ -->
-<section id="visit">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="ordinal">08</span>
-      <span class="eyebrow">Find us</span>
-      <h2 class="reveal-clip">Visit Us</h2>
-    </div>
-    <div class="visit-grid">
-      <div class="visit-card reveal">
-        <div class="visit-row">
-          <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-pin"/></svg>
-          <div><h4>Address</h4><p>12 Blomstergade, Copenhagen 1454</p></div>
-        </div>
-        <div class="visit-row">
-          <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-clock"/></svg>
-          <div><h4>Hours</h4><p>Mon–Fri 7:30–18:00<br>Sat–Sun 8:00–17:00</p></div>
-        </div>
-        <div class="visit-row">
-          <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-phone"/></svg>
-          <div><h4>Phone</h4><p><a href="tel:+4532148760">+45 32 14 87 60</a></p></div>
-        </div>
-        <div class="visit-row">
-          <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-mail"/></svg>
-          <div><h4>Email</h4><p><a href="mailto:hello@hearthandclove.dk">hello@hearthandclove.dk</a></p></div>
-        </div>
-        <div class="visit-row">
-          <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-instagram"/></svg>
-          <div><h4>Instagram</h4><p><a href="#">@hearthandclove</a></p></div>
-        </div>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=12%20Blomstergade%2C%20Copenhagen%201454" target="_blank" rel="noopener" class="btn btn-primary">
-          Get Directions
-          <svg class="icon" viewBox="0 0 24 24"><use href="#icon-arrow-up-right"/></svg>
-        </a>
-      </div>
-      <div class="map-card reveal" style="transition-delay:80ms">
-        <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <rect width="400" height="320" fill="#56633F"/>
-          <g stroke="#F3EBDD" stroke-width="3" opacity="0.5">
-            <line x1="0" y1="70" x2="400" y2="55"/>
-            <line x1="0" y1="185" x2="400" y2="205"/>
-            <line x1="55" y1="0" x2="85" y2="320"/>
-            <line x1="255" y1="0" x2="225" y2="320"/>
-          </g>
-          <g fill="#F3EBDD" opacity="0.3">
-            <rect x="95" y="90" width="55" height="48" rx="4"/>
-            <rect x="185" y="35" width="50" height="55" rx="4"/>
-            <rect x="280" y="120" width="65" height="50" rx="4"/>
-            <rect x="115" y="205" width="55" height="55" rx="4"/>
-          </g>
-        </svg>
-        <div class="map-pin">
-          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="currentColor" stroke="var(--color-espresso)"><use href="#icon-pin"/></svg>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ Contact ============ -->
-<section class="section-parchment">
-  <div class="container two-col">
-    <div class="section-head reveal" style="margin-bottom:0">
-      <span class="ordinal">09</span>
-      <span class="eyebrow">Get in touch</span>
-      <h2 class="reveal-clip">Contact</h2>
-      <p>Questions, catering, or just want to say hello — send a note and we'll get back to you.</p>
-    </div>
-    <form id="contact-form" class="form-card reveal" novalidate>
-      <div class="form-grid">
-        <div class="form-field full">
-          <label for="contact-name">Name</label>
-          <input type="text" id="contact-name" name="name" data-rules='{"required":true}' autocomplete="name">
-          <span class="error-msg"></span>
-        </div>
-        <div class="form-field full">
-          <label for="contact-email">Email</label>
-          <input type="email" id="contact-email" name="email" data-rules='{"required":true,"email":true}' autocomplete="email" inputmode="email">
-          <span class="error-msg"></span>
-        </div>
-        <div class="form-field full">
-          <label for="contact-message">Message</label>
-          <textarea id="contact-message" name="message" data-rules='{"required":true}'></textarea>
-          <span class="error-msg"></span>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Send message</button>
-      <p class="form-note">This is a portfolio demo — no message is actually sent anywhere.</p>
-    </form>
-  </div>
-</section>
-
-<!-- ============ Ordering demo ============ -->
-<section id="order">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="ordinal">10</span>
-      <span class="eyebrow">Order ahead</span>
-      <h2 class="reveal-clip">Order for pickup</h2>
-      <p>Add anything from the menu above with "Add to order," then open the cart in the top corner to review, choose a pickup time, and place a demo order — no payment required.</p>
-    </div>
-    <div class="product-grid product-grid--two">
-      <article class="product-card reveal-rise">
-        <div class="product-card__media">
-          <img src="assets/img/gallery/coffee-beans.jpg" alt="A close-up texture of freshly roasted coffee beans." width="1600" height="1066" loading="lazy">
-          <button type="button" class="product-card__add" data-id="beans-bag" data-name="Coffee Beans, 500g Bag" data-price="145" data-img="assets/img/gallery/coffee-beans.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
-        </div>
-        <div class="product-card__body">
-          <div class="product-card__row">
-            <h3 class="product-card__name">Coffee Beans, 500g Bag</h3>
-            <span class="product-card__price">145 kr.</span>
-          </div>
-          <p class="product-card__desc">Our house roast, whole bean or ground to order.</p>
-        </div>
-      </article>
-      <article class="product-card reveal-rise" style="transition-delay:60ms">
-        <div class="product-card__media">
-          <img src="assets/img/gallery/bread-basket.jpg" alt="Wooden shelves lined with the day's loaves." width="1476" height="1600" loading="lazy">
-          <button type="button" class="product-card__add" data-id="bread-box" data-name="Box of Assorted Bread &amp; Rolls" data-price="220" data-img="assets/img/gallery/bread-basket.jpg">
-            <svg class="icon" viewBox="0 0 24 24"><use href="#icon-bag"/></svg> Add to order
-          </button>
-        </div>
-        <div class="product-card__body">
-          <div class="product-card__row">
-            <h3 class="product-card__name">Box of Assorted Bread &amp; Rolls</h3>
-            <span class="product-card__price">220 kr.</span>
-          </div>
-          <p class="product-card__desc">Six rolls, the baker's choice, boxed to go.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ Table reservation ============ -->
-<section class="section-parchment">
-  <div class="container two-col">
-    <div class="section-head reveal" style="margin-bottom:0">
-      <span class="ordinal">11</span>
-      <span class="eyebrow">Book ahead</span>
-      <h2 class="reveal-clip">Reserve a Table</h2>
-      <p>We hold window tables for parties of four or more. For anything smaller, walk-ins are always welcome.</p>
-    </div>
-    <form id="reservation-form" class="form-card reveal" novalidate>
-      <div class="form-grid">
-        <div class="form-field">
-          <label for="res-name">Name</label>
-          <input type="text" id="res-name" name="name" data-rules='{"required":true}' autocomplete="name">
-          <span class="error-msg"></span>
-        </div>
-        <div class="form-field">
-          <label for="res-guests">Guests</label>
-          <input type="number" id="res-guests" name="guests" min="1" value="2" data-rules='{"required":true,"min":1}' inputmode="numeric">
-          <span class="error-msg"></span>
-        </div>
-        <div class="form-field">
-          <label for="res-date">Date</label>
-          <input type="date" id="res-date" name="date" data-rules='{"required":true}'>
-          <span class="error-msg"></span>
-        </div>
-        <div class="form-field">
-          <label for="res-time">Time</label>
-          <input type="time" id="res-time" name="time" data-rules='{"required":true}'>
-          <span class="error-msg"></span>
-        </div>
-        <div class="form-field">
-          <label for="res-email">Email</label>
-          <input type="email" id="res-email" name="email" data-rules='{"required":true,"email":true}' autocomplete="email" inputmode="email">
-          <span class="error-msg"></span>
-        </div>
-        <div class="form-field">
-          <label for="res-phone">Phone</label>
-          <input type="tel" id="res-phone" name="phone" data-rules='{"required":true}' autocomplete="tel" inputmode="tel">
-          <span class="error-msg"></span>
-        </div>
-        <div class="form-field full">
-          <label for="res-note">Special request</label>
-          <textarea id="res-note" name="note" data-rules='{"required":false}'></textarea>
-          <span class="error-msg"></span>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Reserve table</button>
-      <p class="form-note">This is a portfolio demo — no reservation is actually booked.</p>
-    </form>
-  </div>
-</section>
+  </section>
 
 </main>
 
-<!-- ============ Cart drawer ============ -->
-<div class="cart-drawer" id="cart-drawer" aria-hidden="true">
-  <div class="cart-drawer__scrim"></div>
-  <div class="cart-drawer__panel">
-    <div class="cart-drawer__head">
-      <h2>Your order</h2>
-      <button type="button" class="cart-drawer__close" aria-label="Close cart">
-        <svg class="icon icon-lg" viewBox="0 0 24 24"><use href="#icon-close"/></svg>
-      </button>
-    </div>
-    <div class="cart-drawer__body">
-      <p class="cart-drawer__empty">Your order is empty. Add something warm from the menu.</p>
-    </div>
-    <div class="cart-drawer__foot" style="display:none">
-      <div class="cart-subtotal"><span>Subtotal</span><span>0 kr.</span></div>
-      <div class="pickup-field">
-        <label for="pickup-time">Pickup time</label>
-        <select id="pickup-time">
-          <option>As soon as possible</option>
-          <option>In 30 minutes</option>
-          <option>In 1 hour</option>
-          <option>Tomorrow morning</option>
-        </select>
-      </div>
-      <button type="button" class="btn btn-primary btn-block" id="place-order">Place demo order</button>
-      <p class="cart-microcopy">Demo order — no payment required.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ============ Toasts ============ -->
-<div class="toast-region" aria-live="polite"></div>
-
-<!-- ============ Footer ============ -->
+<!-- 07 footer -->
 <footer class="footer">
   <div class="container">
-    <div class="footer__mark">Hearth <em>&amp;</em> Clove</div>
-  </div>
-  <div class="container footer__top">
-    <div>
-      <a href="#home" class="wordmark">
-        <svg class="icon" viewBox="0 0 24 24"><use href="#icon-croissant"/></svg>
-        Hearth &amp; Clove
-      </a>
-      <p class="footer__desc">A neighborhood bakery and coffee house on Blomstergade, Copenhagen. Baking daily since 2019.</p>
-      <div class="footer__social">
-        <a href="#" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24"><use href="#icon-instagram"/></svg></a>
-        <a href="#" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24"><use href="#icon-facebook"/></svg></a>
-        <a href="#" aria-label="TikTok"><svg class="icon" viewBox="0 0 24 24"><use href="#icon-tiktok"/></svg></a>
+    <div class="footer__top">
+      <h3>Freshly baked, thoughtfully made.</h3>
+      <div class="footer__col">
+        <h4>Find us</h4>
+        <ul>
+          <li>Jægersborggade 14</li>
+          <li>2200 Copenhagen N</li>
+          <li>hello@hearthandclove.example</li>
+          <li>+45 00 00 00 00</li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>More</h4>
+        <ul>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="credits.html">Photo credits</a></li>
+          <li><a href="#" data-demo>Instagram</a></li>
+          <li><a href="#" data-demo>Newsletter</a></li>
+        </ul>
       </div>
     </div>
-    <div>
-      <h5>Explore</h5>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#story">Our Story</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#visit">Visit Us</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Contact</h5>
-      <ul>
-        <li>12 Blomstergade, Copenhagen 1454</li>
-        <li><a href="tel:+4532148760">+45 32 14 87 60</a></li>
-        <li><a href="mailto:hello@hearthandclove.dk">hello@hearthandclove.dk</a></li>
-      </ul>
-    </div>
-    <div>
-      <h5>Hours</h5>
-      <ul>
-        <li>Mon–Fri 7:30–18:00</li>
-        <li>Sat–Sun 8:00–17:00</li>
-      </ul>
-    </div>
-  </div>
-  <div class="container footer__bottom">
-    <p>Freshly baked, thoughtfully made.</p>
-    <div style="display:flex; gap:18px;">
-      <a href="credits.html">Photo credits</a>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Hearth &amp; Clove. A fictional bakery, built as a design demo.</span>
+      <span>Photography under Creative Commons &mdash; <a class="link" href="credits.html">see credits</a></span>
     </div>
   </div>
 </footer>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox__close" type="button" data-lightbox-close>Close</button>
+  <img src="" alt="">
+  <p class="lightbox__caption"></p>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="assets/js/main.js"></script>
 </body>

@@ -1,26 +1,4 @@
 {
-  "hero/hero-counter.jpg": {
-    "title": "Coffeeshop Coffee",
-    "creator": "Larissa de Corves",
-    "source": "stocksnap",
-    "provider": "stocksnap",
-    "license": "cc0",
-    "license_version": "1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "foreign_landing_url": "https://stocksnap.io/photo/coffeeshop-coffee-04USGA6ASM",
-    "attribution": "\"Coffeeshop Coffee\" by Larissa de Corves is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
-  },
-  "story/interior-wide.jpg": {
-    "title": "A dimly lit cafe interior with warm yellow lighting, wooden furniture, framed black and white photographs on a textured green wall, indoor plants on a windowsill, and a manual coffee grinder on a wooden counter.",
-    "creator": "Manjil Aryal",
-    "source": "wordpress",
-    "provider": "wordpress",
-    "license": "cc0",
-    "license_version": "1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "foreign_landing_url": "https://wordpress.org/photos/photo/556a11d29e/",
-    "attribution": "\"A dimly lit cafe interior with warm yellow lighting, wooden furniture, framed black and white photographs on a textured green wall, indoor plants on a windowsill, and a manual coffee grinder on a wooden counter.\" by Manjil Aryal is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
-  },
   "gallery/croissants-closeup.jpg": {
     "title": "Free close croissant wooden board",
     "creator": null,
@@ -31,50 +9,6 @@
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "foreign_landing_url": "https://www.rawpixel.com/image/5912923/image-public-domain-wood-food",
     "attribution": "\"Free close croissant wooden board\" is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
-  },
-  "gallery/latte-art.jpg": {
-    "title": "Still Items",
-    "creator": "Nao Triponez",
-    "source": "stocksnap",
-    "provider": "stocksnap",
-    "license": "cc0",
-    "license_version": "1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "foreign_landing_url": "https://stocksnap.io/photo/still-items-33JVMY84L1",
-    "attribution": "\"Still Items\" by Nao Triponez is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
-  },
-  "gallery/cinnamon-rolls.jpg": {
-    "title": "Free cinnamon rolls image",
-    "creator": null,
-    "source": "rawpixel",
-    "provider": "rawpixel",
-    "license": "cc0",
-    "license_version": "1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "foreign_landing_url": "https://www.rawpixel.com/image/5913829/image-public-domain-food-free",
-    "attribution": "\"Free cinnamon rolls image\" is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
-  },
-  "gallery/coffee-beans.jpg": {
-    "title": "Roasted Coffee Beans Texture",
-    "creator": "freestock.ca",
-    "source": "wikimedia",
-    "provider": "wikimedia",
-    "license": "by-sa",
-    "license_version": "3.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
-    "foreign_landing_url": "https://commons.wikimedia.org/w/index.php?curid=20606129",
-    "attribution": "\"Roasted Coffee Beans Texture\" by freestock.ca is licensed under CC BY-SA 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/3.0/."
-  },
-  "gallery/barista-pour.jpg": {
-    "title": "Barista Latte",
-    "creator": "Burst",
-    "source": "stocksnap",
-    "provider": "stocksnap",
-    "license": "cc0",
-    "license_version": "1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "foreign_landing_url": "https://stocksnap.io/photo/barista-latte-DTKOOFPC06",
-    "attribution": "\"Barista Latte\" by Burst is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
   },
   "products/flat-white.jpg": {
     "title": "Flat white coffee at Sainsbury's, Chingford, London, England 2",
@@ -87,39 +21,6 @@
     "foreign_landing_url": "https://commons.wikimedia.org/w/index.php?curid=81194491",
     "attribution": "\"Flat white coffee at Sainsbury's, Chingford, London, England 2\" by Acabashi is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/."
   },
-  "products/cappuccino.jpg": {
-    "title": "Coffee Cup",
-    "creator": "phatonlaphat thongsriphong",
-    "source": "stocksnap",
-    "provider": "stocksnap",
-    "license": "cc0",
-    "license_version": "1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "foreign_landing_url": "https://stocksnap.io/photo/coffee-cup-CQQMILRZPU",
-    "attribution": "\"Coffee Cup\" by phatonlaphat thongsriphong is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
-  },
-  "products/iced-latte.jpg": {
-    "title": "macro view cold latte glass",
-    "creator": null,
-    "source": "rawpixel",
-    "provider": "rawpixel",
-    "license": "cc0",
-    "license_version": "1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "foreign_landing_url": "https://www.rawpixel.com/image/3283433/free-photo-image-coffee-iced-drink",
-    "attribution": "\"macro view cold latte glass\" is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
-  },
-  "products/butter-croissant.jpg": {
-    "title": "File:Croissant, whole.jpg",
-    "creator": "SKopp",
-    "source": "wikimedia",
-    "provider": "wikimedia",
-    "license": "by-sa",
-    "license_version": "3.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
-    "foreign_landing_url": "https://commons.wikimedia.org/w/index.php?curid=33252104",
-    "attribution": "\"File:Croissant, whole.jpg\" by SKopp is licensed under CC BY-SA 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/3.0/."
-  },
   "products/basque-cheesecake.jpg": {
     "title": "San Sebastian Cheesecake",
     "creator": "Stolbovsky",
@@ -130,17 +31,6 @@
     "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
     "foreign_landing_url": "https://commons.wikimedia.org/w/index.php?curid=129564224",
     "attribution": "\"San Sebastian Cheesecake\" by Stolbovsky is licensed under CC BY-SA 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/3.0/."
-  },
-  "products/tiramisu.jpg": {
-    "title": "A slice of tiramisu on a beige plate with a metal spoon beside it. The dessert has creamy layers dusted with cocoa, set on a wooden table.",
-    "creator": "Uttkrista Chhetri",
-    "source": "wordpress",
-    "provider": "wordpress",
-    "license": "cc0",
-    "license_version": "1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "foreign_landing_url": "https://wordpress.org/photos/photo/27569f2114/",
-    "attribution": "\"A slice of tiramisu on a beige plate with a metal spoon beside it. The dessert has creamy layers dusted with cocoa, set on a wooden table.\" by Uttkrista Chhetri is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
   },
   "story/founder-hands.jpg": {
     "title": "Free chef kneads dough image",
@@ -164,39 +54,6 @@
     "foreign_landing_url": "https://commons.wikimedia.org/w/index.php?curid=31927056",
     "attribution": "\"Danish pastry\" by RhinoMind is licensed under CC BY-SA 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/3.0/."
   },
-  "gallery/espresso-pull.jpg": {
-    "title": "Free espresso coffee machine image",
-    "creator": null,
-    "source": "rawpixel",
-    "provider": "rawpixel",
-    "license": "cc0",
-    "license_version": "1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "foreign_landing_url": "https://www.rawpixel.com/image/5904154/photo-image-public-domain-coffee-free",
-    "attribution": "\"Free espresso coffee machine image\" is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
-  },
-  "gallery/bread-basket.jpg": {
-    "title": "Free shelf bread bakery shop",
-    "creator": null,
-    "source": "rawpixel",
-    "provider": "rawpixel",
-    "license": "cc0",
-    "license_version": "1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "foreign_landing_url": "https://www.rawpixel.com/image/5901216/photo-image-public-domain-food-free",
-    "attribution": "\"Free shelf bread bakery shop\" is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
-  },
-  "gallery/cafe-exterior.jpg": {
-    "title": "Paris - Boulangerie - 112 rue Saint-Dominique - 001",
-    "creator": "Thesupermat",
-    "source": "wikimedia",
-    "provider": "wikimedia",
-    "license": "by-sa",
-    "license_version": "3.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
-    "foreign_landing_url": "https://commons.wikimedia.org/w/index.php?curid=16762179",
-    "attribution": "\"Paris - Boulangerie - 112 rue Saint-Dominique - 001\" by Thesupermat is licensed under CC BY-SA 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/3.0/."
-  },
   "products/matcha-latte.jpg": {
     "title": "Hot matcha green tea latte in a cup",
     "creator": "Louie Sonugan",
@@ -218,5 +75,49 @@
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "foreign_landing_url": "https://www.rawpixel.com/image/5919792/photo-image-background-public-domain-food",
     "attribution": "\"Free cinnamon roll image\" is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
+  },
+  "hero/cafe-windows.jpg": {
+    "title": "Arched windows empty café",
+    "creator": null,
+    "source": "rawpixel",
+    "provider": "rawpixel",
+    "license": "cc0",
+    "license_version": "1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://www.rawpixel.com/image/3301932/free-photo-image-interior-cafe",
+    "attribution": "\"Arched windows empty café\" is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
+  },
+  "story/cup-and-flowers.jpg": {
+    "title": "Cafe Window and Cup",
+    "creator": null,
+    "source": "rawpixel",
+    "provider": "rawpixel",
+    "license": "cc0",
+    "license_version": "1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://www.rawpixel.com/image/5967554/cafe-window-and-cup",
+    "attribution": "\"Cafe Window and Cup\" is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
+  },
+  "gallery/white-cafe.jpg": {
+    "title": "White theme cafe",
+    "creator": null,
+    "source": "rawpixel",
+    "provider": "rawpixel",
+    "license": "cc0",
+    "license_version": "1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://www.rawpixel.com/image/3283414/free-photo-image-coffee-shop-tabletop",
+    "attribution": "\"White theme cafe\" is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
+  },
+  "gallery/copenhagen-canal.jpg": {
+    "title": "Copenhagen Boats",
+    "creator": "Eric Haidara",
+    "source": "stocksnap",
+    "provider": "stocksnap",
+    "license": "cc0",
+    "license_version": "1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://stocksnap.io/photo/copenhagen-boats-CWQTH6Q5O9",
+    "attribution": "\"Copenhagen Boats\" by Eric Haidara is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/."
   }
 }

@@ -1,537 +1,149 @@
-/* ==========================================================================
-   Hearth & Clove — main.js
-   Plain vanilla JS. No dependencies, no build step.
-   Sections: helpers, toasts, scroll reveal, nav drawer, lightbox, cart,
-   forms (contact + reservation), scroll chrome, menu tabs, self-test.
-   ========================================================================== */
+/* Hearth & Clove — nav overlay, reveal, lightbox, demo-link toasts. */
 
 (function () {
-  "use strict";
+  'use strict';
 
-  /* ---------------- Helpers ---------------- */
-  const $ = (sel, ctx) => (ctx || document).querySelector(sel);
-  const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
-  const fmtKr = (n) => `${n} kr.`;
-  const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------------- Toasts ----------------
-     Transitions (not keyframes) so a second toast never restart-glitches
-     the first. A tiny queue gates concurrent toasts: only one is animating
-     "in" at a time, each holds, then exits, then the next starts. */
-  function initToasts() {
-    const region = $(".toast-region");
-    if (!region) return () => {};
-    let queue = [];
-    let showing = false;
+  /* ---------- toast ---------- */
 
-    function showNext() {
-      if (showing || queue.length === 0) return;
-      showing = true;
-      const msg = queue.shift();
-      const el = document.createElement("div");
-      el.className = "toast";
-      el.setAttribute("role", "status");
-      el.setAttribute("aria-live", "polite");
-      el.textContent = msg;
-      region.appendChild(el);
-      // force layout so the transition runs, then animate in
-      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("is-visible")));
-      setTimeout(() => {
-        el.classList.remove("is-visible");
-        el.addEventListener("transitionend", () => {
-          el.remove();
-          showing = false;
-          showNext();
-        }, { once: true });
-      }, 2600);
-    }
+  var toastEl = document.getElementById('toast');
+  var toastTimer;
 
-    return function toast(message) {
-      queue.push(message);
-      showNext();
-    };
+  function toast(message) {
+    if (!toastEl) return;
+    toastEl.textContent = message;
+    toastEl.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('is-visible'); }, 3200);
   }
 
-  /* ---------------- Scroll reveal ----------------
-     IntersectionObserver, fires once, then unobserves. */
-  function initReveal() {
-    const els = $$(".reveal, .reveal-rise, .reveal-clip");
-    if (!els.length) return;
-    if (!("IntersectionObserver" in window)) {
-      els.forEach((el) => el.classList.add("is-visible"));
-      return;
+  /* ---------- nav overlay ---------- */
+
+  var overlay = document.getElementById('nav-overlay');
+  var openBtn = document.querySelector('[data-nav-open]');
+
+  function setNav(open) {
+    if (!overlay) return;
+    overlay.classList.toggle('is-open', open);
+    document.body.classList.toggle('is-locked', open);
+    if (openBtn) openBtn.setAttribute('aria-expanded', String(open));
+    if (open) {
+      var first = overlay.querySelector('.overlay__links a');
+      if (first) first.focus();
+    } else if (openBtn) {
+      openBtn.focus();
     }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-    );
-    els.forEach((el, i) => {
-      el.style.setProperty("--i", i % 8);
-      io.observe(el);
+  }
+
+  if (overlay) {
+    overlay.removeAttribute('hidden'); // CSS handles visibility; hidden would kill the fade
+    if (openBtn) openBtn.addEventListener('click', function () { setNav(true); });
+    overlay.addEventListener('click', function (e) {
+      if (e.target.closest('[data-nav-close]') || e.target.closest('a')) setNav(false);
     });
   }
 
-  /* ---------------- Nav drawer ----------------
-     Drawer open/close state is a native checkbox (CSS handles the slide).
-     JS only adds: close on Escape, close after tapping a link. */
-  function initNavDrawer() {
-    const toggle = $("#nav-toggle");
-    if (!toggle) return;
-    const closeBtn = $(".nav-drawer__close");
-    const links = $$(".nav-drawer__links a, .nav-drawer__cta a");
-    const close = () => { toggle.checked = false; };
-    if (closeBtn) closeBtn.addEventListener("click", close);
-    links.forEach((a) => a.addEventListener("click", close));
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && toggle.checked) close();
+  /* ---------- lightbox ---------- */
+
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = lightbox && lightbox.querySelector('img');
+  var lightboxCaption = lightbox && lightbox.querySelector('.lightbox__caption');
+
+  function setLightbox(img) {
+    if (!lightbox) return;
+    if (img) {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = img.alt;
+    }
+    lightbox.classList.toggle('is-open', Boolean(img));
+    document.body.classList.toggle('is-locked', Boolean(img));
+  }
+
+  if (lightbox) {
+    lightbox.removeAttribute('hidden');
+    lightbox.addEventListener('click', function () { setLightbox(null); });
+    document.querySelectorAll('[data-lightbox] .frame').forEach(function (frame) {
+      frame.addEventListener('click', function () { setLightbox(frame.querySelector('img')); });
     });
   }
 
-  /* ---------------- Lightbox ----------------
-     Keyboard-navigable gallery viewer with a real focus trap. */
-  function initLightbox() {
-    const items = $$(".gallery-item button");
-    const lightbox = $("#lightbox");
-    if (!items.length || !lightbox) return;
-    const img = $(".lightbox__figure img", lightbox);
-    const caption = $(".lightbox__caption", lightbox);
-    const closeBtn = $(".lightbox__close", lightbox);
-    const prevBtn = $(".lightbox__nav--prev", lightbox);
-    const nextBtn = $(".lightbox__nav--next", lightbox);
-    let index = 0;
-    let lastFocused = null;
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    setLightbox(null);
+    setNav(false);
+  });
 
-    function render() {
-      const el = items[index];
-      img.src = el.dataset.full || el.querySelector("img").src;
-      img.alt = el.querySelector("img").alt;
-      caption.textContent = el.dataset.caption || "";
-    }
-    function open(i) {
-      index = i;
-      lastFocused = document.activeElement;
-      render();
-      lightbox.classList.add("is-open");
-      lightbox.setAttribute("aria-hidden", "false");
-      closeBtn.focus();
-      document.body.style.overflow = "hidden";
-    }
-    function close() {
-      lightbox.classList.remove("is-open");
-      lightbox.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-      if (lastFocused) lastFocused.focus();
-    }
-    function step(delta) {
-      index = (index + delta + items.length) % items.length;
-      render();
-    }
-    items.forEach((btn, i) => btn.addEventListener("click", () => open(i)));
-    closeBtn.addEventListener("click", close);
-    prevBtn.addEventListener("click", () => step(-1));
-    nextBtn.addEventListener("click", () => step(1));
-    $(".lightbox__scrim", lightbox).addEventListener("click", close);
+  /* ---------- dead demo links ---------- */
 
-    lightbox.addEventListener("keydown", (e) => {
-      if (!lightbox.classList.contains("is-open")) return;
-      if (e.key === "Escape") { close(); return; }
-      if (e.key === "ArrowRight") { step(1); return; }
-      if (e.key === "ArrowLeft") { step(-1); return; }
-      if (e.key === "Tab") {
-        const focusable = $$(FOCUSABLE, lightbox).filter((el) => el.offsetParent !== null);
-        if (!focusable.length) return;
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault(); last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault(); first.focus();
-        }
-      }
-    });
-  }
+  document.addEventListener('click', function (e) {
+    var demo = e.target.closest('[data-demo]');
+    if (!demo) return;
+    e.preventDefault();
+    toast('Demo site — ' + (demo.textContent.trim() || 'this link') + ' goes nowhere.');
+  });
 
-  /* ---------------- Cart ----------------
-     State persists in localStorage as { [productId]: qty }.
-     Product facts (name/price/image) are read from each "Add to order"
-     button's data-* attributes the first time we see it — the DOM is the
-     single source of truth, no duplicated product list in JS. */
-  const CART_KEY = "hc_cart_v1";
+  /* ---------- reveal on scroll ---------- */
 
-  function createCart(toast) {
-    const catalog = new Map();
-    $$(".product-card__add[data-id]").forEach((btn) => {
-      catalog.set(btn.dataset.id, {
-        id: btn.dataset.id,
-        name: btn.dataset.name,
-        price: Number(btn.dataset.price),
-        img: btn.dataset.img,
+  var revealables = document.querySelectorAll('.reveal');
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealables.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
       });
-    });
-
-    let state = loadCart();
-
-    function loadCart() {
-      try {
-        const raw = localStorage.getItem(CART_KEY);
-        return raw ? JSON.parse(raw) : {};
-      } catch (e) {
-        return {};
-      }
-    }
-    function save() {
-      try { localStorage.setItem(CART_KEY, JSON.stringify(state)); } catch (e) { /* storage unavailable, cart stays in-memory */ }
-    }
-    function add(id, qty) {
-      state[id] = (state[id] || 0) + (qty || 1);
-      save();
-      render();
-    }
-    function setQty(id, qty) {
-      if (qty <= 0) { delete state[id]; } else { state[id] = qty; }
-      save();
-      render();
-    }
-    function remove(id) { setQty(id, 0); }
-    function clear() { state = {}; save(); render(); }
-    function lines() {
-      return Object.keys(state)
-        .filter((id) => catalog.has(id) && state[id] > 0)
-        .map((id) => ({ ...catalog.get(id), qty: state[id] }));
-    }
-    function subtotal(ls) {
-      return (ls || lines()).reduce((sum, l) => sum + l.price * l.qty, 0);
-    }
-    function count() {
-      return Object.values(state).reduce((sum, q) => sum + q, 0);
-    }
-
-    /* ---- rendering ---- */
-    const drawer = $("#cart-drawer");
-    const body = $(".cart-drawer__body", drawer);
-    const foot = $(".cart-drawer__foot", drawer);
-    const badge = $(".cart-badge");
-
-    function render() {
-      const ls = lines();
-      const prev = Number(badge.textContent) || 0;
-      badge.textContent = String(count());
-      badge.hidden = count() === 0;
-      if (count() > prev) {
-        // pop the badge via a class toggle, so the transition curve in CSS does the work
-        badge.classList.add("is-pop");
-        setTimeout(() => badge.classList.remove("is-pop"), 160);
-      }
-
-      if (!ls.length) {
-        body.innerHTML = '<p class="cart-drawer__empty">Your order is empty. Add something warm from the menu.</p>';
-        foot.style.display = "none";
-        return;
-      }
-      foot.style.display = "flex";
-      body.innerHTML = "";
-      ls.forEach((l) => {
-        const row = document.createElement("div");
-        row.className = "cart-line";
-        row.innerHTML = `
-          <img src="${l.img}" alt="" width="68" height="68" loading="lazy">
-          <div class="cart-line__info">
-            <div class="cart-line__top">
-              <span class="cart-line__name">${l.name}</span>
-              <span class="cart-line__price">${fmtKr(l.price * l.qty)}</span>
-            </div>
-            <div class="cart-line__controls">
-              <div class="cart-qty">
-                <button type="button" class="cart-qty__btn" data-action="dec" aria-label="Decrease quantity">−</button>
-                <span class="cart-qty__val">${l.qty}</span>
-                <button type="button" class="cart-qty__btn" data-action="inc" aria-label="Increase quantity">+</button>
-              </div>
-              <button type="button" class="cart-line__remove" data-action="remove">Remove</button>
-            </div>
-          </div>`;
-        row.querySelector('[data-action="inc"]').addEventListener("click", () => setQty(l.id, l.qty + 1));
-        row.querySelector('[data-action="dec"]').addEventListener("click", () => setQty(l.id, l.qty - 1));
-        row.querySelector('[data-action="remove"]').addEventListener("click", () => remove(l.id));
-        body.appendChild(row);
-      });
-      $(".cart-subtotal span:last-child", foot).textContent = fmtKr(subtotal(ls));
-    }
-
-    return { add, setQty, remove, clear, lines, subtotal, count, render, catalog };
+    }, { rootMargin: '0px 0px -12% 0px' });
+    revealables.forEach(function (el) { observer.observe(el); });
   }
 
-  function initCartUI(cart, toast) {
-    const drawer = $("#cart-drawer");
-    const openBtn = $("#cart-open");
-    const closeBtn = $(".cart-drawer__close", drawer);
-    const scrim = $(".cart-drawer__scrim", drawer);
-    let lastFocused = null;
+  /* ---------- ?selftest=1 ---------- */
 
-    function open() {
-      lastFocused = document.activeElement;
-      drawer.classList.add("is-open");
-      drawer.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-      closeBtn.focus();
-    }
-    function close() {
-      drawer.classList.remove("is-open");
-      drawer.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-      if (lastFocused) lastFocused.focus();
-    }
-    openBtn.addEventListener("click", open);
-    closeBtn.addEventListener("click", close);
-    scrim.addEventListener("click", close);
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && drawer.classList.contains("is-open")) close();
+  if (new URLSearchParams(location.search).get('selftest') !== '1') return;
+
+  window.addEventListener('load', function () {
+    var fails = [];
+    function check(name, ok) { if (!ok) fails.push(name); }
+
+    document.querySelectorAll('main img, footer img').forEach(function (img) {
+      check('alt missing: ' + img.getAttribute('src'), img.alt.trim().length > 8);
+      check('broken image: ' + img.getAttribute('src'), !img.complete || img.naturalWidth > 0); // lazy images may not have started yet
     });
 
-    $$(".product-card__add[data-id]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        cart.add(btn.dataset.id, 1);
-        btn.classList.add("is-added");
-        // keep the original markup (icon + label) so the check-icon state can be reverted verbatim
-        if (!btn.dataset.label) btn.dataset.label = btn.innerHTML;
-        const original = btn.dataset.label;
-        btn.innerHTML = '<svg class="icon" viewBox="0 0 24 24"><use href="#icon-check"/></svg> Added';
-        toast(`${btn.dataset.name} added to your order.`);
-        setTimeout(() => {
-          btn.classList.remove("is-added");
-          btn.innerHTML = original;
-        }, 1200);
-      });
-    });
-
-    const placeBtn = $("#place-order");
-    if (placeBtn) {
-      placeBtn.addEventListener("click", () => {
-        if (cart.count() === 0) return;
-        cart.clear();
-        close();
-        toast("Demo order placed — we'll have it ready at your pickup time.");
-      });
+    if (overlay) {
+      setNav(true);
+      check('overlay opens', overlay.classList.contains('is-open'));
+      setNav(false);
+      check('overlay closes', !overlay.classList.contains('is-open'));
+      check('body unlocked', !document.body.classList.contains('is-locked'));
     }
 
-    cart.render();
-  }
-
-  /* ---------------- Forms ----------------
-     Client-side only: validate, show inline errors, then a success state.
-     No backend — the button disables and a toast confirms, same pattern
-     for contact and reservation. */
-  function validateField(field, rules) {
-    const wrap = field.closest(".form-field");
-    const errEl = wrap.querySelector(".error-msg");
-    let message = "";
-    const value = field.value.trim();
-    if (rules.required && !value) message = "This field is required.";
-    else if (rules.email && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) message = "Enter a valid email address.";
-    else if (rules.min && value && Number(value) < rules.min) message = `Minimum ${rules.min}.`;
-    wrap.classList.toggle("has-error", Boolean(message));
-    errEl.textContent = message;
-    return !message;
-  }
-
-  function initForm(formSel, opts) {
-    const form = $(formSel);
-    if (!form) return;
-    const fields = $$("[data-rules]", form);
-    const submitBtn = $('button[type="submit"]', form);
-
-    fields.forEach((field) => {
-      field.addEventListener("blur", () => {
-        validateField(field, JSON.parse(field.dataset.rules));
-      });
-    });
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      let valid = true;
-      fields.forEach((field) => {
-        if (!validateField(field, JSON.parse(field.dataset.rules))) valid = false;
-      });
-      if (!valid) {
-        const firstError = form.querySelector(".has-error input, .has-error select, .has-error textarea");
-        if (firstError) firstError.focus();
-        return;
-      }
-      submitBtn.disabled = true;
-      submitBtn.textContent = opts.pendingLabel;
-      setTimeout(() => {
-        opts.toast(opts.successMessage);
-        form.reset();
-        submitBtn.disabled = false;
-        submitBtn.textContent = opts.defaultLabel;
-      }, 500);
-    });
-  }
-
-  /* ---------------- Self-test ----------------
-     ?selftest=1 runs a handful of console.assert smoke tests over the
-     cart math and validation logic. Not a test suite — just enough to
-     catch a broken subtotal or a validator that stops rejecting bad input. */
-  function runSelfTest(cart) {
-    console.log("[selftest] Hearth & Clove — running cart/validation smoke tests");
-    const ids = Array.from(cart.catalog.keys());
-    console.assert(ids.length >= 6, "[selftest] catalog should have the featured products loaded, got", ids.length);
-    if (!ids.length) return;
-
-    cart.clear();
-    const id = ids[0];
-    const unitPrice = cart.catalog.get(id).price;
-
-    cart.add(id, 1);
-    console.assert(cart.count() === 1, "[selftest] add() should bring count to 1");
-    console.assert(cart.subtotal() === unitPrice, "[selftest] subtotal should equal one unit price");
-
-    cart.add(id, 2);
-    console.assert(cart.count() === 3, "[selftest] add() should accumulate quantity (expected 3, got " + cart.count() + ")");
-    console.assert(cart.subtotal() === unitPrice * 3, "[selftest] subtotal should scale with quantity");
-
-    cart.setQty(id, 5);
-    console.assert(cart.count() === 5, "[selftest] setQty should set exact quantity");
-
-    cart.setQty(id, 0);
-    console.assert(cart.count() === 0, "[selftest] setQty(0) should remove the line");
-    console.assert(cart.lines().length === 0, "[selftest] lines() should be empty after removal");
-
-    if (ids.length > 1) {
-      cart.add(ids[0], 2);
-      cart.add(ids[1], 1);
-      const expected = cart.catalog.get(ids[0]).price * 2 + cart.catalog.get(ids[1]).price * 1;
-      console.assert(cart.subtotal() === expected, "[selftest] subtotal should sum multiple lines correctly");
-      cart.clear();
+    var frame = document.querySelector('[data-lightbox] .frame');
+    if (frame) {
+      frame.click();
+      check('lightbox opens', lightbox.classList.contains('is-open'));
+      check('lightbox has a source', Boolean(lightboxImg.src));
+      setLightbox(null);
+      check('lightbox closes', !lightbox.classList.contains('is-open'));
     }
 
-    console.assert(cart.count() === 0, "[selftest] clear() should empty the cart");
-    console.log("[selftest] done — check above for any failed assertions");
-  }
-
-  /* ---------------- Scroll chrome ----------------
-     Nav background, scroll-progress bar and deckle parallax all read scroll position,
-     so they share ONE rAF-throttled listener. Transforms only — nothing here reflows. */
-  function initScrollChrome() {
-    const nav = $(".nav");
-    const bar = $("#scroll-progress");
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const deckles = reduced ? [] : $$(".deckle");
-    let queued = false;
-
-    function update() {
-      queued = false;
-      const y = window.scrollY;
-      if (nav) nav.classList.toggle("is-scrolled", y > 40);
-      if (bar) {
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        bar.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
-      }
-      deckles.forEach((d) => {
-        const inner = d.firstElementChild;
-        if (!inner) return;
-        // ±12px drift, keyed to how far the divider sits from the middle of the viewport
-        const mid = d.getBoundingClientRect().top + d.offsetHeight / 2;
-        const off = (mid / window.innerHeight - 0.5) * -24;
-        inner.style.transform = `translateY(${Math.max(-12, Math.min(12, off)).toFixed(2)}px)`;
-      });
+    var demo = document.querySelector('[data-demo]');
+    if (demo) {
+      demo.click();
+      check('demo link toasts', toastEl.classList.contains('is-visible'));
+      toastEl.classList.remove('is-visible');
     }
 
-    function onScroll() {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(update);
-    }
+    check('no cart left behind', !document.querySelector('[class*="cart"], [id*="cart"]'));
+    check('no forms left behind', document.querySelectorAll('form').length === 0);
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    update();
-  }
-
-  /* ---------------- Menu tabs ----------------
-     Tab switching itself is CSS (:checked ~ .menu-panels). JS only slides the single
-     caramel indicator and numbers the rows so they can stagger in. */
-  function initMenuTabs() {
-    const tabs = $(".menu-tabs");
-    if (!tabs) return;
-    const indicator = $(".menu-tabs__indicator", tabs);
-    const labels = $$(".tab-label", tabs);
-    if (!indicator || !labels.length) return;
-
-    function moveTo(label) {
-      const vertical = getComputedStyle(tabs).flexDirection === "column";
-      if (vertical) {
-        indicator.style.setProperty("--tab-y", `${label.offsetTop}px`);
-        indicator.style.setProperty("--tab-h", label.offsetHeight);
-      } else {
-        indicator.style.setProperty("--tab-x", `${label.offsetLeft - tabs.scrollLeft}px`);
-        indicator.style.setProperty("--tab-w", label.offsetWidth);
-      }
-    }
-
-    function sync() {
-      const checked = labels.find((l) => {
-        const radio = document.getElementById(l.getAttribute("for"));
-        return radio && radio.checked;
-      });
-      if (checked) moveTo(checked);
-    }
-
-    labels.forEach((l) => l.addEventListener("click", () => requestAnimationFrame(sync)));
-    tabs.addEventListener("scroll", sync, { passive: true });
-    window.addEventListener("resize", sync);
-    if (document.fonts) document.fonts.ready.then(sync); // label widths shift once Fraunces/Epilogue land
-    $$(".menu-panel").forEach((panel) => {
-      $$(".menu-item", panel).forEach((item, i) => item.style.setProperty("--i", Math.min(i, 12)));
-    });
-    sync();
-  }
-
-  /* ---------------- Inert demo links ----------------
-     The social accounts and the Instagram handle belong to a fictional bakery, so
-     they stay href="#". Left alone that yanks the page to the top; say so instead. */
-  function initDemoLinks(toast) {
-    $$('a[href="#"]').forEach((a) =>
-      a.addEventListener("click", (e) => {
-        e.preventDefault();
-        toast("Hearth & Clove is a fictional brand — this link goes nowhere.");
-      })
-    );
-  }
-
-  /* ---------------- Init ---------------- */
-  document.addEventListener("DOMContentLoaded", () => {
-    const toast = initToasts();
-    initDemoLinks(toast);
-    initReveal();
-    initScrollChrome();
-    initMenuTabs();
-    initNavDrawer();
-    initLightbox();
-    const cart = createCart(toast);
-    initCartUI(cart, toast);
-
-    initForm("#contact-form", {
-      toast,
-      pendingLabel: "Sending…",
-      defaultLabel: "Send message",
-      successMessage: "Thanks — we'll get back to you soon.",
-    });
-    initForm("#reservation-form", {
-      toast,
-      pendingLabel: "Booking…",
-      defaultLabel: "Reserve table",
-      successMessage: "Thanks — your table request is in. We'll confirm by email.",
-    });
-
-    if (new URLSearchParams(location.search).get("selftest") === "1") {
-      runSelfTest(cart);
-    }
+    var report = fails.length ? 'SELFTEST FAILED:\n- ' + fails.join('\n- ') : 'SELFTEST PASSED';
+    console.log(report);
+    toast(fails.length ? fails.length + ' selftest failure(s) — see console' : 'Selftest passed');
+    document.title = (fails.length ? '[FAIL] ' : '[PASS] ') + document.title;
   });
 })();
